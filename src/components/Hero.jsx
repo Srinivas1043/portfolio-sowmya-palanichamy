@@ -1,6 +1,7 @@
 import React from 'react';
 import { Download, ChevronRight, Leaf } from 'lucide-react';
 import { motion } from 'framer-motion';
+import sowmyaImg from '../assets/sowmya.jpg';
 
 const Hero = () => {
     return (
@@ -82,7 +83,7 @@ const Hero = () => {
                             <div className="absolute inset-0 bg-gradient-to-tr from-primary-color to-secondary-color rounded-[2rem] rotate-6 opacity-20"></div>
                             <div className="absolute inset-0 bg-white rounded-[2rem] -rotate-6 shadow-xl overflow-hidden border-4 border-white">
                                 <img
-                                    src="/src/assets/sowmya.jpg"
+                                    src={sowmyaImg}
                                     alt="Sowmya Palanichamy"
                                     className="w-full h-full object-cover"
                                     onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Sowmya+Palanichamy&background=059669&color=fff&size=400' }}
