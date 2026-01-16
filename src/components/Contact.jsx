@@ -13,7 +13,7 @@ const Contact = () => {
         e.preventDefault();
         const subject = `Portfolio Contact from ${formData.name}`;
         const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-        window.location.href = `mailto:sowmyapalanichamy20@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:sowmyavivin22@gmail.com?subject=${subject}&body=${body}`;
     };
 
     const handleChange = (e) => {
@@ -57,7 +57,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Email</p>
-                                    <a href="mailto:sowmyapalanichamy20@gmail.com" className="font-medium text-gray-800 hover:text-primary-color">sowmyapalanichamy20@gmail.com</a>
+                                    <a href="mailto:sowmyavivin22@gmail.com" className="font-medium text-gray-800 hover:text-primary-color">sowmyavivin22@gmail.com</a>
                                 </div>
                             </div>
 
@@ -67,7 +67,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Phone</p>
-                                    <a href="tel:+393758364375" className="font-medium text-gray-800 hover:text-primary-color">+39 375 836 4375</a>
+                                    <a href="tel:+393518472236" className="font-medium text-gray-800 hover:text-primary-color">+39 351 847 2236</a>
                                 </div>
                             </div>
 
