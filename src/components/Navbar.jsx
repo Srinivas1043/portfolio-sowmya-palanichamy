@@ -17,15 +17,15 @@ const Navbar = () => {
   const navLinks = [
     { title: 'About', href: '#about' },
     { title: 'Experience', href: '#experience' },
+    { title: 'Certifications', href: '#certifications' },
     { title: 'Projects', href: '#projects' },
     { title: 'Contact', href: '#contact' },
   ];
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-opacity-90 bg-[#0a0a0a] backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-opacity-90 bg-[#0a0a0a] backdrop-blur-md shadow-lg' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" className="text-2xl font-bold gradient-text">
