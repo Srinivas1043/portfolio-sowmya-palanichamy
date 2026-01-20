@@ -56,6 +56,16 @@ const Hero = () => {
                             >
                                 Download CV <Download size={18} />
                             </motion.a>
+                            <motion.a
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                href="/assets/SOWMYAPALANICHAMY_FINAL PPT_251021.pptx"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white text-gray-800 px-8 py-3 rounded-full font-medium border border-gray-200 hover:border-primary-color hover:text-primary-color transition-colors flex items-center gap-2 shadow-sm"
+                            >
+                                Presentation <Download size={18} />
+                            </motion.a>
                         </div>
 
                         <div className="mt-12 flex gap-8 items-center text-gray-400">
