@@ -11,6 +11,12 @@ const Experience = () => {
             description: 'Advised incoming/outgoing students on exchange programs. Handled administrative inquiries and translated official documents.'
         },
         {
+            role: 'Scientific Collaborator',
+            company: 'AgroTIE Services LLP, India',
+            period: 'Aug 2024 - Jan 2025',
+            description: 'Completed a specialized hydroponics training program through an Indo-Dutch collaboration. Managed crops like Tomatoes, Capsicum, and Cucumber in a semi-automated greenhouse. Gained expertise in fertigation, substrate management, and crop-specific disease management.'
+        },
+        {
             role: 'Sales Executive (Training)',
             company: 'Global Connective Solutions, India',
             period: '2020 - 2021',
