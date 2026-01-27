@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sowmya Palanichamy - Resume</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #004682;
+            /* RGB 0, 70, 130 */
+            --text-grey: #3C3C3C;
+            /* RGB 60, 60, 60 */
+            --light-grey: #f4f4f4;
+            --section-spacing: 0.8rem;
+            /* Reduced from 1rem */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text-grey);
+            font-size: 9pt;
+            /* Reduced from 9.5pt */
+            line-height: 1.25;
+            /* Reduced from 1.3 */
+            background-color: white;
+            /* A4 width approximation for screen viewing */
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 0.5cm;
+            /* Reduced from 0.8cm */
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2rem;
+            /* Reduced from 2.2rem */
+            color: black;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0px;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            /* Reduced from 1.3rem */
+            color: var(--text-grey);
+            font-weight: normal;
+            margin-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 0.95rem;
+            /* Reduced from 1rem */
+            color: var(--dark-blue);
+            text-transform: uppercase;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1px;
+            margin-top: 0.6rem;
+            /* Reduced from 0.8rem */
+            margin-bottom: 0.3rem;
+        }
+
+        h4 {
+            font-size: 0.9rem;
+            /* Reduced from 0.95rem */
+            color: #000;
+            margin-bottom: 0px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--text-grey);
+            font-size: 0.85rem;
+        }
+
+        a {
+            color: var(--text-grey);
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.2rem;
+            margin-top: 0rem;
+        }
+
+        li {
+            margin-bottom: 0px;
+            /* Minimal list item spacing */
+        }
+
+        /* Layout */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            /* Reduced */
+            border-bottom: 2px solid var(--dark-blue);
+            /* Added visual separation */
+            padding-bottom: 0.5rem;
+            /* Reduced */
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .profile-photo {
+            width: 90px;
+            /* Reduced from 100px */
+            height: 90px;
+            border-radius: 5px;
+            /* Clean square/rounded look */
+            object-fit: cover;
+            border: 2px solid var(--dark-blue);
+            margin-left: 1rem;
+        }
+
+        .contact-info {
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .summary {
+            margin-bottom: 0.8rem;
+            text-align: justify;
+            font-size: 0.9rem;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 65% 31%;
+            /* Adjusted columns */
+            gap: 4%;
+        }
+
+        .date {
+            float: right;
+            font-weight: normal;
+            font-size: 0.85rem;
+        }
+
+        .location {
+            float: right;
+            font-style: normal;
+        }
+
+        /* Utilities */
+        .mb-1 {
+            margin-bottom: 0.3rem;
+        }
+
+        .mt-1 {
+            margin-top: 0.3rem;
+        }
+
+        /* Print adjustments */
+        @media print {
+            body {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .main-container {
+                display: grid;
+                /* Maintain grid for print */
+            }
+
+            h3 {
+                break-after: avoid;
+            }
+
+            .job-role,
+            .mb-1 {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-text">
+            <h1>Sowmya Palanichamy</h1>
+            <h2>Agricultural Engineer & Sustainability Specialist</h2>
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Milan, Italy</span>
+                <span>|</span>
+                <span><i class="fas fa-envelope"></i> <a
+                        href="mailto:sowmyavivin22@gmail.com">sowmyavivin22@gmail.com</a></span>
+                <span>|</span>
+                <span><i class="fas fa-birthday-cake"></i> 12 Nov 1997</span>
+            </div>
+        </div>
+        <img src="src/assets/sowmya.jpg" alt="Sowmya Palanichamy" class="profile-photo">
+    </header>
+
+    <div class="summary">
+        <strong>Summary:</strong> Motivated M.Sc. graduate from Politecnico di Milano with a strong foundation in
+        Agricultural Engineering, LCA, and process optimization. Combines analytical skills in resource management with
+        practical experience in data analysis.
+    </div>
+
+    <div class="main-container">
+
+        <!-- Left Column -->
+        <div class="left-column">
+
+            <section>
+                <h3>Work Experience</h3>
+
+                <div class="job-role">
+                    <h4>Scientific Collaborator <span class="date">08/2024 -- 01/2025</span></h4>
+                    <div class="subtitle">AgroTIE <span class="location">Bengaluru, India</span></div>
+                    <ul>
+                        <li>Completed specialized hydroponics training (Indo-Dutch CoE).</li>
+                        <li>Managed Tomato, Capsicum, Cucumber in semi-automated greenhouse.</li>
+                        <li>Expertise in fertigation, substrate, and disease management.</li>
+                    </ul>
+                </div>
+                <div class="mt-1"></div>
+
+                <div class="job-role">
+                    <h4>Client Services Advisor <span class="date">12/2020 -- 02/2021</span></h4>
+                    <div class="subtitle">Farmagain <span class="location">Coimbatore, India</span></div>
+                    <ul>
+                        <li>Collaborated with sales to offer product bundles to customers.</li>
+                        <li>Presented insights to senior management for strategic initiatives.</li>
+                    </ul>
+                </div>
+                <div class="mt-1"></div>
+
+                <div class="job-role">
+                    <h4>Farming Associate <span class="date">09/2019 -- 09/2020</span></h4>
+                    <div class="subtitle">Del Monte Foods <span class="location">Hosur, India</span></div>
+                    <ul>
+                        <li>Training in raw material sourcing and quality control.</li>
+                        <li>Managed raw material processing and coordinated delivery needs.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Publications</h3>
+                <div>
+                    <h4>Implementation of Dutch Farming in South India <span class="date">Nov 2025</span></h4>
+                    <div class="subtitle">Master's Thesis, Politecnico di Milano</div>
+                    <p style="font-size: 0.95rem; margin-top: 0.2rem;">Developed a sustainable passive hydroponic system
+                        for tropical climates, demonstrating significant water savings and nutrient reduction.</p>
+                </div>
+            </section>
+
+            <section>
+                <h3>Projects</h3>
+
+                <div class="mb-1">
+                    <h4>High-Tech Entrepreneurship <span class="date">01/2024</span></h4>
+                    <p>Business proposal for recycling plastic into 3D printing filaments.</p>
+                </div>
+
+                <div class="mb-1">
+                    <h4>Materials for Agriculture <span class="date">01/2024 -- 03/2024</span></h4>
+                    <p>Analyzed nutrient delivery methods and material efficiency for crops.</p>
+                </div>
+
+                <div class="mb-1">
+                    <h4>Environmental Engineering (LCA) <span class="date">09/2023 -- 12/2023</span></h4>
+                    <p>Analyzed Caviro Extra's LCAs and KPIs related to SDGs.</p>
+                </div>
+
+                <div class="mb-1">
+                    <h4>Organic Cotton Supply Chain <span class="date">09/2023 -- 12/2023</span></h4>
+                    <p>Mapped innovative solutions for Indian Cotton with Fairtrade.</p>
+                </div>
+
+                <div class="mb-1">
+                    <h4>Control of Batch Chemical Process <span class="date">02/2023 -- 04/2023</span></h4>
+                    <p>Simulation of process control using Arduino board and PLC.</p>
+                </div>
+
+                <div class="mb-1">
+                    <h4>Seed Ball Making Machine <span class="date">03/2019 -- 10/2019</span></h4>
+                    <p>Design and development of automated seed ball machinery.</p>
+                </div>
+            </section>
+
+            <section>
+                <h3>Education</h3>
+
+                <div class="mb-1">
+                    <h4>M.Sc. Agricultural Eng.</h4>
+                    <div class="subtitle">Politecnico di Milano, Italy</div>
+                    <div class="date" style="float: none; font-weight: normal;">09/2022 -- 09/2025</div>
+                </div>
+
+                <div class="mb-1">
+                    <h4>B.E. Agriculture Eng.</h4>
+                    <div class="subtitle">Sri Shakthi Institute, India</div>
+                    <div class="date" style="float: none; font-weight: normal;">08/2016 -- 10/2020</div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+
+            <section>
+                <h3>Skills</h3>
+
+                <h4 style="margin-top: 0.5rem;">Technical</h4>
+                <ul style="margin-left: 1rem;">
+                    <li>Life Cycle Assessment (LCA)</li>
+                    <li>Hydroponics & Precision Ag</li>
+                    <li>Irrigation Management</li>
+                    <li>Food Quality Management</li>
+                    <li>AutoCAD & SolidWorks</li>
+                    <li>Ansys Simulation</li>
+                    <li>Data Analysis</li>
+                </ul>
+
+                <h4 style="margin-top: 1rem;">Languages</h4>
+                <ul style="margin-left: 1rem;">
+                    <li>English (Native)</li>
+                    <li>Italian (Professional)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Certifications</h3>
+                <ul style="margin-left: 1rem;">
+                    <li>
+                        <strong>Autodesk AutoCAD User</strong><br>
+                        (12/2017)
+                    </li>
+                    <li>
+                        <strong>Soil & Water Conservation</strong><br>
+                        ICAR (09/2018)
+                    </li>
+                    <li>
+                        <strong>Health and Safety</strong><br>
+                        Polimi (05/2023)
+                    </li>
+                    <li>
+                        <strong>Mechanized Farm Power</strong><br>
+                        Sri Shakthi Inst. (07/2017)
+                    </li>
+                    <li>
+                        <strong>Tractor Operation</strong><br>
+                        Govt of India (07/2019)
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Trainings</h3>
+                <ul style="margin-left: 1rem;">
+                    <li>
+                        <strong>Internship Training</strong><br>
+                        Del Monte Foods (02/2020)
+                    </li>
+                    <li>
+                        <strong>In-Plant Training</strong><br>
+                        AAVIN (07/2019)
+                    </li>
+                    <li>
+                        <strong>Practical Aspects in Ag.</strong><br>
+                        National Seeds (09/2018)
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Personal Details</h3>
+                <p><strong>Nationality:</strong> Indian</p>
+                <p style="margin-top: 0.5rem;"><strong>Location:</strong> Milan, Italy</p>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
