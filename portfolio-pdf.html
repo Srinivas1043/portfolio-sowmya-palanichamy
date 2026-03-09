@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sowmya Palanichamy - Agricultural Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #059669;
+            --secondary-color: #92400e;
+            --accent-light: #f0fdf4;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --border-color: #e5e7eb;
+            --bg-light: #f9fafb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: white;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            a {
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #f0fdf4 0%, #fef3c7 100%);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .header-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .section-title .highlight {
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            gap: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .about-text strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-box {
+            background: var(--accent-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Skills */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-bar {
+            background: var(--border-color);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-role {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .experience-period {
+            background: var(--accent-light);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .experience-company {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .experience-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.1);
+        }
+
+        .project-category {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            width: fit-content;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tool-tag {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .cert-item {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .cert-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-date {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Internships */
+        .internships-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .internship-item {
+            background: var(--accent-light);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .internship-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .internship-text {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            operator: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-light);
+        }
+
+        /* Download Button */
+        .download-section {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #fef3c7 100%);
+            border-radius: 8px;
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .download-section.no-print {
+            display: block;
+        }
+
+        .download-section h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <img src="./src/assets/sowmya.jpg" alt="Sowmya Palanichamy" class="header-photo" onerror="this.src='https://ui-avatars.com/api/?name=Sowmya+Palanichamy&background=059669&color=fff&size=400'">
+            <div class="header-text">
+                <h1>Sowmya Palanichamy</h1>
+                <p class="title">Agricultural Engineer & Researcher</p>
+                <p class="tagline">Merging engineering precision with nature's wisdom</p>
+                <p class="tagline" style="font-size: 0.85rem; margin-top: 0.5rem;">Specializing in Sustainable Farming, Quality Management & Agricultural Automation</p>
+                <div class="contact-info">
+                    <span>📧 <a href="mailto:sowmyavivin22@gmail.com">sowmyavivin22@gmail.com</a></span>
+                    <span>📱 <a href="tel:+393518472236">+39 351 847 2236</a></span>
+                    <span>📍 Milan, Italy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Download Section -->
+        <div class="download-section no-print">
+            <h3>📄 Download Portfolio as PDF</h3>
+            <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About <span class="highlight">Me</span></h2>
+            <div class="about-content">
+                <p class="about-text">
+                    I am a dedicated <strong>Agricultural Engineer</strong> with a strong foundation in <strong>Engineering Processes</strong>, <strong>Quality Management</strong>, and <strong>Sustainable Development</strong>. 
+                    Currently pursuing my Master's at <strong>Politecnico Di Milano</strong>, I excel in fast-paced environments and collaborative settings.
+                </p>
+                <p class="about-text">
+                    My passion lies in bridging the gap between technology and agriculture. From designing <strong>automated seed ball machines</strong> to researching <strong>biodegradable mulching</strong>, 
+                    I am committed to driving success through innovation. I am multilingual (English, Tamil, Italian) and eager to contribute to global agricultural solutions.
+                </p>
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">M.Sc.</div>
+                        <div class="stat-label">Sustainable Development</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="expertise">
+            <h2 class="section-title">Field of <span class="highlight">Expertise</span></h2>
+            <div class="expertise-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Sustainable Farming & Hydroponics</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Quality Management & Control</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">AutoCAD & SolidWorks</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Ansys Simulation & Analysis</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Precision Agriculture & Automation</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Project Management & Coordination</div>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Professional <span class="highlight">Experience</span></h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-role">International Student Exchange Coordinator</div>
+                    <span class="experience-period">07/2025 - 09/2025</span>
+                </div>
+                <div class="experience-company">Politecnico di Milano, Italy</div>
+                <div class="experience-description">
+                    Advised incoming/outgoing students on exchange programs. Handled administrative inquiries and translated official documents.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-role">Scientific Collaborator</div>
+                    <span class="experience-period">Aug 2024 - Jan 2025</span>
+                </div>
+                <div class="experience-company">AgroTIE Services LLP, India</div>
+                <div class="experience-description">
+                    Completed a specialized hydroponics training program through an Indo-Dutch collaboration. Managed crops like Tomatoes, Capsicum, and Cucumber in a semi-automated greenhouse. 
+                    Gained expertise in fertigation, substrate management, and crop-specific disease management.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-role">Sales Executive (Training)</div>
+                    <span class="experience-period">2020 - 2021</span>
+                </div>
+                <div class="experience-company">Global Connective Solutions, India</div>
+                <div class="experience-description">
+                    Established relationships with target audiences and managed marketing communications. Gained experience in digital marketing technologies and online business growth.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-role">Agronomy & AI Trainee</div>
+                    <span class="experience-period">2020 - 2021</span>
+                </div>
+                <div class="experience-company">FarmAgain Agro Private Ltd., India</div>
+                <div class="experience-description">
+                    Specialized training combining Agronomy expertise with Artificial Intelligence. Collaborated with sales teams to drive product bundling and dealer performance.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-role">Quality Officer</div>
+                    <span class="experience-period">2018 - 2019</span>
+                </div>
+                <div class="experience-company">Shanthi Management Solutions Pvt. Ltd, India</div>
+                <div class="experience-description">
+                    Inspected finished products and monitored production procedures to ensure compliance. Addressed quality deviations and implemented corrective actions.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-role">Internship (Processing & Database)</div>
+                    <span class="experience-period">3 Months - 2019</span>
+                </div>
+                <div class="experience-company">Del Monte Foods (FieldFresh Foods Pvt. Ltd.)</div>
+                <div class="experience-description">
+                    Intensive internship focusing on the processing of Del Monte products and managing the fresh division database. Gained hands-on experience in sourcing and quality control.
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Research & <span class="highlight">Field Work</span></h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="project-category">M.Sc Thesis</span>
+                    <h3 class="project-title">Dutch Farming for Tomato Cultivation</h3>
+                    <p class="project-description">
+                        Designed a passive hydroponic model system for year-round tomato and leafy vegetable production in South India. 
+                        Achieved 70% - 90% water savings and 60% nutrient reduction.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Hydroponics</span>
+                        <span class="tool-tag">Sustainable Farming</span>
+                        <span class="tool-tag">Resource Optimization</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-category">Mini Project</span>
+                    <h3 class="project-title">Organic Farming using Bio-fertilizers</h3>
+                    <p class="project-description">
+                        Designed and cost-analyzed an organic farming system using bio-fertilizers like Pseudomonas and Panchakavya. 
+                        Focused on sustainable soil health and chemical-free production.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Bio-fertilizers</span>
+                        <span class="tool-tag">Organic Farming</span>
+                        <span class="tool-tag">Cost Analysis</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-category">Design Project</span>
+                    <h3 class="project-title">Post Hole Digger (Auger) Analysis</h3>
+                    <p class="project-description">
+                        Performed design and structural analysis of a post hole digger using Solidworks and Ansys. 
+                        Optimized the blade geometry for efficient soil excavation and durability.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Solidworks</span>
+                        <span class="tool-tag">Ansys</span>
+                        <span class="tool-tag">Machine Design</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-category">Research</span>
+                    <h3 class="project-title">Biodegradable Mulching Materials</h3>
+                    <p class="project-description">
+                        Researched natural polymers and conducted field trials to identify environmentally-friendly alternatives to plastic mulching. 
+                        Focused on enhancing soil health.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Material Science</span>
+                        <span class="tool-tag">Field Trials</span>
+                        <span class="tool-tag">Sustainability</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-category">Automation</span>
+                    <h3 class="project-title">Automated Chemical Process Control</h3>
+                    <p class="project-description">
+                        Designed and simulated an automated control system using Arduino and PLC. 
+                        Achieved seamless real-time monitoring and control over temperature and flow rates.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Arduino</span>
+                        <span class="tool-tag">PLC</span>
+                        <span class="tool-tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-category">B.Tech Project</span>
+                    <h3 class="project-title">Seed Ball Making Machine</h3>
+                    <p class="project-description">
+                        Designed, developed, and tested an automated seed ball making machine. 
+                        Conducted cost analysis and efficiency testing, earning recognition for innovation.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Machine Design</span>
+                        <span class="tool-tag">Efficiency Testing</span>
+                        <span class="tool-tag">Cost Analysis</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-category">Seminar</span>
+                    <h3 class="project-title">Agricultural Mechanization</h3>
+                    <p class="project-description">
+                        Presented comprehensive research on "Increasing agricultural mechanization for optimal crop yield". 
+                        Analyzed the impact of modern machinery on small-scale farming efficiency.
+                    </p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Research</span>
+                        <span class="tool-tag">Presentation</span>
+                        <span class="tool-tag">Farm Machinery</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships">
+            <h2 class="section-title">Industrial <span class="highlight">Internships</span></h2>
+            
+            <div class="internships-list">
+                <div class="internship-item">
+                    <div class="internship-dot"></div>
+                    <div class="internship-text">Northern Region Farm Machinery Training & Testing Institute (Hisar)</div>
+                </div>
+                <div class="internship-item">
+                    <div class="internship-dot"></div>
+                    <div class="internship-text">National Seeds Corporation (Suraigarh) - Farm Machinery & Irrigation</div>
+                </div>
+                <div class="internship-item">
+                    <div class="internship-dot"></div>
+                    <div class="internship-text">ICAR - Indian Institute of Soil & Water Conservation (Ooty)</div>
+                </div>
+                <div class="internship-item">
+                    <div class="internship-dot"></div>
+                    <div class="internship-text">Aavin Tamilnadu Cooperative Milk Producer Federation Ltd (Chennai)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2 class="section-title">Licenses & <span class="highlight">Certifications</span></h2>
+            
+            <div class="certifications-grid">
+                <div class="cert-item">
+                    <div class="cert-title">Sales Coordinator</div>
+                    <div class="cert-issuer">Farmagain</div>
+                    <div class="cert-date">Dec 2020</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Internship Training</div>
+                    <div class="cert-issuer">Del Monte Foods Private Limited</div>
+                    <div class="cert-date">Feb 2020</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">National Science and Technology Fair 2019</div>
+                    <div class="cert-issuer">CODISSIA - COIMBATORE DISTRICT SMALL INDUSTRIES ASSOCIATION</div>
+                    <div class="cert-date">Aug 2019</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">In Plant Training</div>
+                    <div class="cert-issuer">AAVIN (Tamilnadu Co-op milk producers' Federation ltd)</div>
+                    <div class="cert-date">Jul 2019</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Operation of Different Tractor Operated Agricultural Machinery</div>
+                    <div class="cert-issuer">Ministry of Agriculture & Farmers Welfare, Government of India</div>
+                    <div class="cert-date">Sep 2018</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Practical Aspects in Agriculture Engineering</div>
+                    <div class="cert-issuer">National Seeds Corporation Limited</div>
+                    <div class="cert-date">Sep 2018</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Soil and Water Conservation</div>
+                    <div class="cert-issuer">ICAR- Indian Council of Agricultural Research</div>
+                    <div class="cert-date">Dec 2017</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Autodesk AutoCAD User Certification</div>
+                    <div class="cert-issuer">Autodesk</div>
+                    <div class="cert-date">Jul 2017</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Increasing Mechanized Farm Power</div>
+                    <div class="cert-issuer">Sri Shakthi Institute of Engineering and Technology</div>
+                    <div class="cert-date">Jul 2017</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Design and Analysis of Post Hole Digger Auger</div>
+                    <div class="cert-issuer">AGRI INTEX CODISSIA</div>
+                    <div class="cert-date">Various</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news">
+            <h2 class="section-title">Featured In The <span class="highlight">News</span></h2>
+            
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;">
+                <!-- Header -->
+                <div style="background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(146, 64, 14, 0.1)); padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                    <div style="max-width: 800px;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.75rem;">
+                            Engineering for Efficiency and Sustainability
+                        </h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.9rem; color: var(--text-light);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="color: var(--primary-color); font-weight: 600;">🌍 Publication:</span>
+                                <span style="color: var(--text-dark); font-weight: 600;">Mondo Padano</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="color: var(--secondary-color); font-weight: 600;">📅 Date:</span>
+                                <span>December 12, 2025</span>
+                            </div>
+                            <div>
+                                <span>📍 Cremona, Italy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div style="padding: 1.5rem;">
+                    <p style="color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem;">
+                        Featured in the renowned Italian publication Mondo Padano's "Young & Work" section for outstanding achievements in agricultural engineering education. 
+                        The article highlights Sowmya's three-year academic journey at Politecnico di Milano, her innovative research on sustainable farming methods, 
+                        and her contributions to bridging agricultural practices between Europe and South India.
+                    </p>
+
+                    <!-- Highlights -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem;">
+                            Key Highlights
+                        </h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                            <div style="display: flex; gap: 0.75rem;">
+                                <span style="color: var(--primary-color); font-weight: 700; flex-shrink: 0;">✓</span>
+                                <span style="color: var(--text-dark); font-size: 0.9rem;">Master's Degree in Agricultural Engineering</span>
+                            </div>
+                            <div style="display: flex; gap: 0.75rem;">
+                                <span style="color: var(--primary-color); font-weight: 700; flex-shrink: 0;">✓</span>
+                                <span style="color: var(--text-dark); font-size: 0.9rem;">Implementation of Dutch Farming for Tomato Cultivation thesis</span>
+                            </div>
+                            <div style="display: flex; gap: 0.75rem;">
+                                <span style="color: var(--primary-color); font-weight: 700; flex-shrink: 0;">✓</span>
+                                <span style="color: var(--text-dark); font-size: 0.9rem;">International student exchange experience</span>
+                            </div>
+                            <div style="display: flex; gap: 0.75rem;">
+                                <span style="color: var(--primary-color); font-weight: 700; flex-shrink: 0;">✓</span>
+                                <span style="color: var(--text-dark); font-size: 0.9rem;">Expertise in sustainable hydroponics and resource optimization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <a href="https://www.mondopadano.it/news/economia-lavoro/giovani-e-lavoro/lingegneria-per-creare-efficienza-e-sostenibilita/22951" 
+                       target="_blank" rel="noopener noreferrer"
+                       style="display: inline-block; background: var(--primary-color); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem;">
+                        Read Full Article →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-dark);">Let's Cultivate Growth Together</h3>
+                    <p style="color: var(--text-light); line-height: 1.6; margin-bottom: 1.5rem;">
+                        I'm always open to discussing sustainable agriculture, automation in farming, new research opportunities, or creative collaborations.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="font-size: 1.5rem;">📧</span>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">Email</p>
+                                <a href="mailto:sowmyavivin22@gmail.com" style="font-weight: 600; color: var(--primary-color); text-decoration: none;">sowmyavivin22@gmail.com</a>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="font-size: 1.5rem;">📱</span>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">Phone</p>
+                                <a href="tel:+393518472236" style="font-weight: 600; color: var(--primary-color); text-decoration: none;">+39 351 847 2236</a>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="font-size: 1.5rem;">📍</span>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">Location</p>
+                                <p style="font-weight: 600; color: var(--text-dark);">Milan, Italy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Sowmya Palanichamy. All rights reserved.</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Cultivating Sustainable Solutions | Agricultural Engineer & Researcher</p>
+    </footer>
+
+</body>
+</html>
