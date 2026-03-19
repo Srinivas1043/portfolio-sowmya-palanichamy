@@ -39,12 +39,10 @@ const About = () => {
                 >
                     <motion.div variants={itemVariants}>
                         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                            I am a dedicated Agricultural Engineer with a strong foundation in <strong>Engineering Processes</strong>, <strong>Quality Management</strong>, and <strong>Sustainable Development</strong>.
-                            Currently pursuing my Master's at <strong>Politecnico Di Milano</strong>, I excel in fast-paced environments and collaborative settings.
+                            I am a dedicated <strong>Hydroponics & CEA Engineer</strong> with proven expertise in designing and implementing <strong>controlled environment agriculture systems</strong>. Holding an M.Sc. in Sustainable Development from <strong>Politecnico di Milano</strong>, I combine engineering rigor with agricultural innovation to solve real-world farming challenges.
                         </p>
                         <p className="text-gray-600 text-lg leading-relaxed">
-                            My passion lies in bridging the gap between technology and agriculture. From designing <strong>automated seed ball machines</strong> to researching <strong>biodegradable mulching</strong>,
-                            I am committed to driving success through innovation. I am multilingual (English, Tamil, Italian) and eager to contribute to global agricultural solutions.
+                            My specialization spans <strong>hydroponic system design</strong>, <strong>irrigation optimization</strong>, <strong>agricultural machinery engineering</strong>, and <strong>process automation</strong>. I've delivered measurable results: 70-90% water savings, 60% nutrient reduction, and enhanced crop yields through precision engineering. Fluent in English, Tamil, and Italian, I'm ready to contribute to global agri-tech solutions in Europe and beyond.
                         </p>
 
                         <div className="mt-8 grid grid-cols-2 gap-4">
@@ -72,16 +70,18 @@ const About = () => {
                         className="bg-stone-50 p-8 rounded-2xl border border-stone-100"
                     >
                         <h3 className="text-xl font-bold mb-6 text-[#064e3b] flex items-center gap-2">
-                            <BookOpen size={20} /> Field of Expertise
+                            <BookOpen size={20} /> Core Competencies
                         </h3>
 
                         <div className="space-y-6">
                             {/* Skill Bars with Animation */}
                             {[
-                                { name: 'Sustainable Farming & Hydroponics', level: '95%' },
-                                { name: 'Quality Management & Control', level: '90%' },
-                                { name: 'AutoCAD & SolidWorks', level: '85%' },
-                                { name: 'Ansys Simulation & Analysis', level: '75%' }
+                                { name: 'Hydroponics & CEA System Design', level: '95%' },
+                                { name: 'Agricultural Machinery & Design Engineering', level: '90%' },
+                                { name: 'Process Automation & Control Systems', level: '85%' },
+                                { name: 'Water & Irrigation Systems Optimization', level: '90%' },
+                                { name: 'CAD (Solidworks) & Simulation (Ansys)', level: '85%' },
+                                { name: 'Quality Management & Sustainability', level: '85%' }
                             ].map((skill, index) => (
                                 <div key={index}>
                                     <div className="flex justify-between mb-2">

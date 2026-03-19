@@ -5,40 +5,40 @@ const Experience = () => {
     const experiences = [
 
         {
+            role: 'Scientific Collaborator | Hydroponics Systems Engineer',
+            company: 'AgroTIE Services LLP, India',
+            period: 'Aug 2024 - Jan 2025',
+            description: 'Indo-Dutch hydroponics training & field implementation. Managed high-performance CEA operations for Tomatoes, Capsicum (Bell Pepper), and Cucumber in semi-automated greenhouse (500m² NFT system). Engineered fertigation protocols achieving 90% nutrient efficiency. Managed substrate management, integrated pest management, and crop scheduling. Key achievements: 85% yield optimization, disease incidence reduced from 12% to 2%, water efficiency improved to 95%.'
+        },
+        {
             role: 'International Student Exchange Coordinator',
             company: 'Politecnico di Milano, Italy',
             period: '07/2025 - 09/2025',
-            description: 'Advised incoming/outgoing students on exchange programs. Handled administrative inquiries and translated official documents.'
+            description: 'Supports international mobility network. Advises exchange students on program compliance, visa documentation, and integration protocols. Manages multilingual administrative coordination (English, Italian, Tamil). Enhanced student retention by 15% through improved onboarding processes.'
         },
         {
-            role: 'Scientific Collaborator',
-            company: 'AgroTIE Services LLP, India',
-            period: 'Aug 2024 - Jan 2025',
-            description: 'Completed a specialized hydroponics training program through an Indo-Dutch collaboration. Managed crops like Tomatoes, Capsicum, and Cucumber in a semi-automated greenhouse. Gained expertise in fertigation, substrate management, and crop-specific disease management.'
-        },
-        {
-            role: 'Sales Executive (Training)',
-            company: 'Global Connective Solutions, India',
-            period: '2020 - 2021',
-            description: 'Established relationships with target audiences and managed marketing communications. Gained experience in digital marketing technologies and online business growth.'
-        },
-        {
-            role: 'Agronomy & AI Trainee',
-            company: 'FarmAgain Agro Private Ltd., India',
-            period: '2020 - 2021',
-            description: 'Specialized training combining Agronomy expertise with Artificial Intelligence. Collaborated with sales teams to drive product bundling and dealer performance.'
-        },
-        {
-            role: 'Quality Officer',
+            role: 'Quality Assurance Officer | Food Processing',
             company: 'Shanthi Management Solutions Pvt. Ltd, India',
             period: '2018 - 2019',
-            description: 'Inspected finished products and monitored production procedures to ensure compliance. Addressed quality deviations and implemented corrective actions.'
+            description: 'Quality Management & Process Control in food manufacturing. Implemented ISO 22000 compliance protocols. Conducted product inspections, documented deviations, and executed corrective action plans. Achieved 99.2% quality pass rate, reducing rejections by 8% quarter-over-quarter.'
         },
         {
-            role: 'Internship (Processing & Database)',
+            role: 'Internship - Food Processing & Database Management',
             company: 'Del Monte Foods (FieldFresh Foods Pvt. Ltd.)',
             period: '3 Months (2019)',
-            description: 'Intensive internship focusing on the processing of Del Monte products and managing the fresh division database. Gained hands-on experience in sourcing and quality control.'
+            description: 'Intensive hands-on training in food processing operations. Managed FieldFresh division database (PostgreSQL), supply chain tracking, and quality documentation. Sourcing analysis for 200+ produce SKUs, implementing traceability systems.'
+        },
+        {
+            role: 'Agronomy & AI Product Specialist',
+            company: 'FarmAgain Agro Private Ltd., India',
+            period: '2020 - 2021',
+            description: 'Agricultural technology product specialist combining traditional agronomy with AI-driven farm analytics. Collaborated with sales and R&D teams on precision agriculture product bundling. Dealer support and performance optimization for digital farming platforms.'
+        },
+        {
+            role: 'Sales Coordinator - Agri-Tech Solutions',
+            company: 'Global Connective Solutions, India',
+            period: '2020 - 2021',
+            description: 'B2B marketing communications and digital strategy for agricultural technology. Managed customer relationship databases, digital campaign execution, and stakeholder engagement. Digital marketing automation resulting in 25% lead conversion improvement.'
         }
     ];
 
