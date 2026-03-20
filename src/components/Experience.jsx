@@ -5,40 +5,40 @@ const Experience = () => {
     const experiences = [
 
         {
-            role: 'Scientific Collaborator | Hydroponics Systems Engineer',
+            role: 'Scientific Collaborator',
             company: 'AgroTIE Services LLP, India',
             period: 'Aug 2024 - Jan 2025',
-            description: 'Indo-Dutch hydroponics training & field implementation. Managed high-performance CEA operations for Tomatoes, Capsicum (Bell Pepper), and Cucumber in semi-automated greenhouse (500m² NFT system). Engineered fertigation protocols achieving 90% nutrient efficiency. Managed substrate management, integrated pest management, and crop scheduling. Key achievements: 85% yield optimization, disease incidence reduced from 12% to 2%, water efficiency improved to 95%.'
+            description: 'Completed specialized hydroponics training through Indo-Dutch collaboration. Managed greenhouse operations for Tomatoes, Capsicum, and Cucumber cultivation. Expertise in fertigation systems, crop management, and sustainable farming practices. Achievements: 85% yield optimization, disease management, and water efficiency improvement to 95%.'
         },
         {
             role: 'International Student Exchange Coordinator',
             company: 'Politecnico di Milano, Italy',
             period: '07/2025 - 09/2025',
-            description: 'Supports international mobility network. Advises exchange students on program compliance, visa documentation, and integration protocols. Manages multilingual administrative coordination (English, Italian, Tamil). Enhanced student retention by 15% through improved onboarding processes.'
+            description: 'Advised students on exchange programs and international mobility. Handled administrative coordination and documentation in multiple languages. Enhanced student retention through improved onboarding processes.'
         },
         {
-            role: 'Quality Assurance Officer | Food Processing',
+            role: 'Quality Officer',
             company: 'Shanthi Management Solutions Pvt. Ltd, India',
             period: '2018 - 2019',
-            description: 'Quality Management & Process Control in food manufacturing. Implemented ISO 22000 compliance protocols. Conducted product inspections, documented deviations, and executed corrective action plans. Achieved 99.2% quality pass rate, reducing rejections by 8% quarter-over-quarter.'
+            description: 'Quality Management & inspection in manufacturing facility. Implemented compliance protocols, documented deviations, and executed corrective actions. Achieved 99.2% quality pass rate with 8% reduction in product rejections.'
         },
         {
-            role: 'Internship - Food Processing & Database Management',
+            role: 'Internship (Processing & Database)',
             company: 'Del Monte Foods (FieldFresh Foods Pvt. Ltd.)',
             period: '3 Months (2019)',
-            description: 'Intensive hands-on training in food processing operations. Managed FieldFresh division database (PostgreSQL), supply chain tracking, and quality documentation. Sourcing analysis for 200+ produce SKUs, implementing traceability systems.'
+            description: 'Intensive internship in food processing operations, supply chain management, and database administration. Sourcing analysis for 200+ product SKUs with quality documentation.'
         },
         {
-            role: 'Agronomy & AI Product Specialist',
+            role: 'Agronomy & AI Trainee',
             company: 'FarmAgain Agro Private Ltd., India',
             period: '2020 - 2021',
-            description: 'Agricultural technology product specialist combining traditional agronomy with AI-driven farm analytics. Collaborated with sales and R&D teams on precision agriculture product bundling. Dealer support and performance optimization for digital farming platforms.'
+            description: 'Agricultural technology training combining agronomy with AI-driven farm analytics. Product specialization and dealer performance optimization for precision agriculture platforms.'
         },
         {
-            role: 'Sales Coordinator - Agri-Tech Solutions',
+            role: 'Sales Executive (Training)',
             company: 'Global Connective Solutions, India',
             period: '2020 - 2021',
-            description: 'B2B marketing communications and digital strategy for agricultural technology. Managed customer relationship databases, digital campaign execution, and stakeholder engagement. Digital marketing automation resulting in 25% lead conversion improvement.'
+            description: 'Digital marketing and B2B communications for agricultural solutions. Customer relationship management and digital campaign execution with 25% lead conversion improvement.'
         }
     ];
 

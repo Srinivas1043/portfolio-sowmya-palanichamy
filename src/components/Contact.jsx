@@ -45,15 +45,12 @@ const Contact = () => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <div>
-                            <h3 className="text-2xl font-bold text-gray-800">Open to Opportunities</h3>
-                            <p className="text-sm text-primary-color font-semibold mt-1">Hydroponics | CEA | Agri-Tech | Irrigation Engineering | Machinery Design</p>
-                        </div>
+                        <h3 className="text-2xl font-bold text-gray-800">Let's Cultivate Growth Together</h3>
                         <p className="text-gray-600 leading-relaxed">
-                            Seeking roles in <strong>Hydroponics Engineering, Controlled Environment Agriculture (CEA), Precision Agriculture, Agricultural Machinery Design, and Irrigation Systems</strong> with companies committed to sustainable farming innovation. Available for permanent positions, project-based work, and R&D collaborations in Europe and globally.
+                            I'm always open to discussing agricultural engineering projects, sustainable farming solutions, machinery design, automation opportunities, research collaborations, and innovative agri-tech initiatives.
                         </p>
                         <p className="text-gray-600 leading-relaxed">
-                            My expertise in automated systems, process optimization, CAD/Ansys design, and quality management makes me ideal for agri-tech startups, equipment manufacturers, and research institutions. Research interests: sustainable hydroponics scaling, AI-driven crop management, and biosystems engineering.
+                            Available for roles in agricultural engineering, machinery design, quality management, process automation, sustainability consulting, and R&D positions with forward-thinking organizations.
                         </p>
 
                         <div className="space-y-6">

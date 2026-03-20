@@ -21,7 +21,7 @@ const Hero = () => {
                     >
                         <div className="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-sm text-primary-color text-sm font-semibold mb-6 border border-green-100">
                             <Leaf size={16} />
-                            <span>Sustainable CEA & Precision Farming Solutions</span>
+                            <span>Engineering Innovation for Sustainable Agriculture</span>
                         </div>
 
                         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gray-900 leading-tight">
@@ -30,11 +30,11 @@ const Hero = () => {
                         </h1>
 
                         <h2 className="text-2xl md:text-3xl text-gray-600 mb-8 font-medium">
-                            Hydroponics & CEA Engineer
+                            Agricultural Engineer & Researcher
                         </h2>
 
                         <p className="text-gray-500 text-lg mb-8 max-w-lg leading-relaxed">
-                            Designing scalable, sustainable controlled environment agriculture systems. M.Sc. in Sustainable Development (Agri-food) | Expertise in hydroponics, irrigation design, and agricultural automation | 4+ years driving measurable yield improvements and resource optimization.
+                            Merging engineering precision with agricultural innovation. M.Sc. in Sustainable Development | Expert in hydroponic systems, machinery design, quality management, and sustainable farming solutions. 4+ years delivering measurable results: 70-90% water savings, enhanced crop yields, and optimized production efficiency.
                         </p>
 
                         <div className="flex flex-wrap gap-4">

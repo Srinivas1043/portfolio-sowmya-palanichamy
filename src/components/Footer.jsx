@@ -9,7 +9,7 @@ const Footer = () => {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Sowmya Palanichamy",
-        "title": "Hydroponics & CEA Engineer",
+        "title": "Agricultural Engineer",
         "url": "https://sowmyapalanichamy.com",
         "email": "sowmyavivin22@gmail.com",
         "phone": "+39 351 847 2236",
@@ -18,7 +18,7 @@ const Footer = () => {
             "streetAddress": "Milan",
             "addressCountry": "IT"
         },
-        "jobTitle": "Agricultural Engineer | Hydroponics Systems Engineer",
+        "jobTitle": "Agricultural Engineer | Machinery Design Specialist",
         "educationCredential": {
             "@type": "EducationalOccupationalCredential",
             "name": "M.Sc. Sustainable Development (Agri-food)",
@@ -54,7 +54,7 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-bold gradient-text mb-3">Sowmya Palanichamy</h3>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Hydroponics & CEA Engineer | M.Sc. Sustainable Development | Precision Agriculture Expert
+                            Agricultural Engineer | M.Sc. Sustainable Development | Machinery Design & Innovation Expert
                         </p>
                     </div>
 
@@ -62,11 +62,11 @@ const Footer = () => {
                     <div>
                         <h4 className="text-gray-300 font-semibold mb-4 text-sm">Specializations</h4>
                         <ul className="text-gray-400 text-sm space-y-2">
-                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Hydroponics Systems</a></li>
-                            <li><a href="#projects" className="hover:text-primary-color transition-colors">CEA Engineering</a></li>
-                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Irrigation Design</a></li>
-                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Agricultural Machinery</a></li>
+                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Machinery Design</a></li>
+                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Hydroponic Systems</a></li>
+                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Quality Management</a></li>
                             <li><a href="#projects" className="hover:text-primary-color transition-colors">Process Automation</a></li>
+                            <li><a href="#projects" className="hover:text-primary-color transition-colors">Sustainable Farming</a></li>
                         </ul>
                     </div>
 
@@ -93,7 +93,7 @@ const Footer = () => {
                 {/* Social Links & Copyright */}
                 <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                     <p className="text-gray-500 text-sm text-center md:text-left mb-4 md:mb-0">
-                        &copy; {currentYear} Sowmya Palanichamy. All rights reserved. | Based in Italy
+                        &copy; {currentYear} Sowmya Palanichamy. All rights reserved. | Agricultural Engineer | Based in Milan, Italy
                     </p>
                     <div className="flex gap-4">
                         <a
