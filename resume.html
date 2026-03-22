@@ -115,10 +115,12 @@
         }
 
         .summary {
-            text-align: justify;
+            text-align: left;
             font-size: 0.9rem;
-            line-height: 1.3;
+            line-height: 1.4;
             color: var(--text-grey);
+            word-spacing: 0.05em;
+            padding-right: 0.5rem;
         }
 
         .main-container {
@@ -126,11 +128,13 @@
             grid-template-columns: 65% 32%;
             /* Left (Work/Edu) - Right (Contact/Skills) */
             gap: 3%;
+            align-items: start;
         }
 
         /* Right Column specific styling */
         .sidebar-section {
-            margin-bottom: 1rem;
+            margin-bottom: 1.1rem;
+            padding-bottom: 0.2rem;
         }
 
         .contact-item {
@@ -308,26 +312,26 @@
             <div class="sidebar-section">
                 <!-- Contact Info mapped to sidebar -->
                 <div class="contact-item">
-                    <span class="contact-label">Domicilio:</span> Milan, Italy.
+                    <span class="contact-label">Address:</span> Milan, Italy.
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Cellulare:</span> +39 3518472236
+                    <span class="contact-label">Mobile:</span> +39 3518472236
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Mail:</span> <a
+                    <span class="contact-label">Email:</span> <a
                         href="mailto:sowmyavivin22@gmail.com">sowmyavivin22@gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">LinkedIn:</span> <a href="#">linkedin.com/in/sowmya-palanichamy</a>
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Nazionalità:</span> Indian
+                    <span class="contact-label">Nationality:</span> Indian
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Data di nascita:</span> 11-December-1997
+                    <span class="contact-label">Date of Birth:</span> 11-December-1997
                 </div>
                 <div class="contact-item">
-                    <span class="contact-label">Luogo di nascita:</span> Tamil Nadu, India.
+                    <span class="contact-label">Place of Birth:</span> Tamil Nadu, India.
                 </div>
             </div>
 
@@ -359,11 +363,13 @@
                 </ul>
             </section>
 
-            <section class="sidebar-section">
+            <section class="sidebar-section" style="margin-bottom: 0;">
                 <h3>Trainings</h3>
                 <ul style="margin-left: 1rem; font-size: 0.9rem;">
-                    <li>Internship - Del Monte Foods (02/2020)</li>
-                    <li>In-Plant - AAVIN (07/2019)</li>
+                    <li>Aavin Tamilnadu Cooperative Milk Producer Federation Ltd (Chennai)</li>
+                    <li>ICAR - Indian Institute of Soil & Water Conservation (Ooty)</li>
+                    <li>Northern Region Farm Machinery Training & Testing Institute (Hisar)</li>
+                    <li>National Seeds Corporation (Suraigarh) - Farm Machinery & Irrigation</li>
                     <li>Practical Aspects in Ag. (09/2018)</li>
                 </ul>
             </section>
