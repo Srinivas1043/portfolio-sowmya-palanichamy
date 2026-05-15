@@ -5,6 +5,27 @@ import { Award, Calendar, Briefcase } from 'lucide-react';
 const Certifications = () => {
   const certifications = [
     {
+      title: 'Harnessing the Power of Data with Power BI',
+      issuer: 'Microsoft',
+      date: 'Coursera',
+      url: 'https://coursera.org/share/a6e32090553a6e4ac0e4272f124a1e64',
+      skills: ['Power BI', 'Data Analysis', 'Business Intelligence', 'Data Visualization']
+    },
+    {
+      title: 'Life Cycle Assessment',
+      issuer: 'University of Michigan',
+      date: 'Coursera',
+      url: 'https://coursera.org/share/3d8b1334ad655cbbb2a38c1f158aace4',
+      skills: ['Life Cycle Assessment', 'Sustainability', 'Environmental Analysis', 'Product Development']
+    },
+    {
+      title: 'IoT Enabled Farming',
+      issuer: 'EDUCBA',
+      date: 'Coursera',
+      url: 'https://coursera.org/share/d1915b4634f1adac103cdd82c91596d8',
+      skills: ['IoT', 'Agriculture', 'Smart Farming', 'Sensor Technology']
+    },
+    {
       title: 'Autodesk AutoCAD User Certification',
       issuer: 'Autodesk',
       date: 'Jul 2017',
@@ -100,9 +121,20 @@ const Certifications = () => {
                 )}
               </div>
               
-              <h3 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-indigo-400 transition-colors">
-                {cert.title}
-              </h3>
+              {cert.url ? (
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-indigo-400 transition-colors block hover:underline"
+                >
+                  {cert.title}
+                </a>
+              ) : (
+                <h3 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-indigo-400 transition-colors">
+                  {cert.title}
+                </h3>
+              )}
               
               <div className="flex items-center gap-2 text-gray-400 text-sm mb-4">
                 <Briefcase size={14} />

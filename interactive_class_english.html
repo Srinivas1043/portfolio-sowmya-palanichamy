@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍽️ Let's Go to a Restaurant! — 2-Hour English Class</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --y:#FFD93D; --o:#FF6B35; --r:#FF4757; --g:#2ECC71;
+  --b:#3498DB; --p:#9B59B6; --pk:#FF6EB4; --t:#1ABC9C;
+  --bg:#FFF8E7; --w:#FFFFFF; --dk:#2C3E50;
+  --girl:#FFD6E0; --boy:#BDE0FF; --staff:#C8F7C5; --narrator:#FFF0B3;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Nunito',sans-serif; background:var(--bg); min-height:100vh; overflow-x:hidden; }
+
+/* ── ANIMATED BACKGROUND ── */
+.bg-anim { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.bg-circle { position:absolute; border-radius:50%; opacity:.06; animation:bgFloat 10s ease-in-out infinite alternate; }
+@keyframes bgFloat { from{transform:translateY(0) scale(1);} to{transform:translateY(-40px) scale(1.08);} }
+
+#app { position:relative; z-index:1; max-width:980px; margin:0 auto; padding:16px 16px 40px; }
+
+/* ── TITLE SCREEN ── */
+#title-screen { text-align:center; padding:30px 10px 20px; animation:fadeUp .8s ease; }
+.main-logo { font-size:clamp(4rem,14vw,7rem); display:block; animation:logoBounce 2.2s ease-in-out infinite alternate; }
+@keyframes logoBounce { from{transform:translateY(0) rotate(-4deg);} to{transform:translateY(-18px) rotate(4deg);} }
+.main-title {
+  font-family:'Baloo 2',cursive; font-size:clamp(2.2rem,7vw,4.2rem); font-weight:900; line-height:1.05;
+  background:linear-gradient(135deg,var(--o),var(--r),var(--p)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin-bottom:6px;
+}
+.main-sub { font-size:clamp(.95rem,3vw,1.25rem); color:var(--dk); font-weight:700; margin-bottom:22px; }
+.hero-chars { display:flex; justify-content:center; gap:28px; margin:18px 0 24px; flex-wrap:wrap; }
+.hero-char { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.hc-emo { font-size:clamp(3rem,10vw,5.5rem); animation:charFloat 2.8s ease-in-out infinite alternate; display:block; }
+.hero-char:nth-child(2) .hc-emo { animation-delay:.5s; }
+.hero-char:nth-child(3) .hc-emo { animation-delay:1s; }
+.hc-name { font-size:.82rem; font-weight:900; color:var(--dk); background:rgba(255,255,255,.85); border-radius:10px; padding:3px 10px; }
+@keyframes charFloat { from{transform:translateY(0);} to{transform:translateY(-14px);} }
+
+.units-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; max-width:800px; margin:0 auto 28px; }
+.upill { background:white; border-radius:14px; padding:10px 8px; text-align:center; box-shadow:0 3px 12px rgba(0,0,0,.08); border-top:4px solid; cursor:default; transition:transform .2s; }
+.upill:hover { transform:translateY(-4px); }
+.upill .unum { font-size:.68rem; font-weight:900; color:#aaa; text-transform:uppercase; letter-spacing:.5px; }
+.upill .uname { font-size:.8rem; font-weight:800; color:var(--dk); margin-top:3px; }
+
+.time-badge { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,var(--p),var(--b)); color:white; border-radius:30px; padding:8px 20px; font-weight:800; font-size:.9rem; margin-bottom:22px; }
+
+/* ── STICKY TOP BAR ── */
+#top-bar { display:none; position:sticky; top:0; z-index:200; background:white; box-shadow:0 3px 18px rgba(0,0,0,.1); border-radius:0 0 20px 20px; padding:10px 16px; }
+.tbi { display:flex; align-items:center; gap:10px; max-width:980px; margin:0 auto; }
+.tb-back { font-family:'Baloo 2',cursive; font-weight:800; font-size:.85rem; background:none; border:2px solid #ddd; border-radius:20px; padding:5px 12px; cursor:pointer; color:var(--dk); transition:all .2s; }
+.tb-back:hover { border-color:var(--b); color:var(--b); }
+.tb-info { flex:1; }
+.tb-unit { font-size:.68rem; font-weight:900; color:var(--o); text-transform:uppercase; letter-spacing:.5px; }
+.tb-scene { font-family:'Baloo 2',cursive; font-weight:800; font-size:.9rem; color:var(--dk); }
+.tb-prog-wrap { width:120px; }
+.tb-prog-label { font-size:.65rem; font-weight:700; color:#aaa; margin-bottom:3px; }
+.tb-prog-bar { background:#eee; border-radius:10px; height:7px; overflow:hidden; }
+.tb-prog-fill { height:100%; background:linear-gradient(90deg,var(--g),var(--t)); border-radius:10px; transition:width .5s ease; }
+.tb-timer { font-family:'Baloo 2',cursive; font-weight:900; font-size:1.15rem; color:var(--r); min-width:52px; text-align:right; }
+
+/* ── UNIT INTRO CARD ── */
+.unit-intro { background:white; border-radius:28px; padding:28px; box-shadow:0 8px 40px rgba(0,0,0,.11); margin-bottom:16px; animation:fadeUp .5s ease; position:relative; overflow:hidden; text-align:center; }
+.unit-intro::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg,var(--y),var(--o),var(--r),var(--pk),var(--p),var(--b),var(--t),var(--g)); }
+.ui-badge { display:inline-block; border-radius:30px; padding:6px 18px; font-family:'Baloo 2',cursive; font-weight:900; font-size:1rem; color:white; margin-bottom:12px; }
+.ui-emoji { font-size:4rem; display:block; margin-bottom:10px; animation:logoBounce 2s ease-in-out infinite alternate; }
+.ui-title { font-family:'Baloo 2',cursive; font-size:clamp(1.6rem,5vw,2.4rem); font-weight:900; color:var(--dk); margin-bottom:8px; }
+.ui-desc { font-size:clamp(.9rem,2.5vw,1.05rem); font-weight:700; color:#666; max-width:500px; margin:0 auto 18px; line-height:1.55; }
+.ui-scenes-list { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.ui-scene-chip { background:#f5f5f5; border-radius:20px; padding:5px 14px; font-size:.8rem; font-weight:800; color:var(--dk); }
+
+/* ── SCENE CARD ── */
+.scene-card { background:white; border-radius:28px; padding:24px 22px 20px; box-shadow:0 6px 32px rgba(0,0,0,.1); margin-bottom:14px; animation:fadeUp .45s ease; position:relative; overflow:hidden; }
+.scene-card::before { content:''; position:absolute; top:0; left:0; right:0; height:7px; }
+.scene-card.u1::before { background:linear-gradient(90deg,#FFD93D,#FF6B35); }
+.scene-card.u2::before { background:linear-gradient(90deg,#FF6B35,#FF4757); }
+.scene-card.u3::before { background:linear-gradient(90deg,#FF4757,#FF6EB4); }
+.scene-card.u4::before { background:linear-gradient(90deg,#FF6EB4,#9B59B6); }
+.scene-card.u5::before { background:linear-gradient(90deg,#9B59B6,#3498DB); }
+.scene-card.u6::before { background:linear-gradient(90deg,#3498DB,#1ABC9C); }
+.scene-card.u7::before { background:linear-gradient(90deg,#1ABC9C,#2ECC71); }
+.scene-card.u8::before { background:linear-gradient(90deg,#2ECC71,#FFD93D); }
+.scene-card.u9::before { background:linear-gradient(90deg,#FFD93D,#FF6B35); }
+.scene-card.u10::before { background:linear-gradient(90deg,#FF6B35,#FF4757); }
+.scene-card.u11::before { background:linear-gradient(90deg,#9B59B6,#3498DB); }
+.scene-card.u12::before { background:linear-gradient(90deg,#FF4757,#FF6EB4); }
+
+.sc-header { display:flex; align-items:center; gap:12px; margin-bottom:4px; }
+.sc-unit-badge { font-family:'Baloo 2',cursive; font-weight:900; font-size:.72rem; color:white; border-radius:20px; padding:3px 11px; white-space:nowrap; }
+.sc-title-wrap .sc-title { font-family:'Baloo 2',cursive; font-size:clamp(1.15rem,3.5vw,1.65rem); font-weight:900; color:var(--dk); }
+.sc-title-wrap .sc-sub { font-size:.75rem; color:#aaa; font-weight:700; }
+.sc-emoji { font-size:2.2rem; animation:wiggle 3s ease-in-out infinite; }
+@keyframes wiggle { 0%,100%{transform:rotate(-6deg);} 50%{transform:rotate(6deg);} }
+
+/* ILLUSTRATION STRIP */
+.illus { width:100%; border-radius:18px; padding:16px 12px; margin-bottom:16px; text-align:center; }
+.illus-lbl { font-size:.72rem; font-weight:900; color:rgba(0,0,0,.35); text-transform:uppercase; letter-spacing:.6px; margin-bottom:10px; }
+.chars-row { display:flex; justify-content:center; align-items:flex-end; gap:14px; flex-wrap:wrap; }
+.char-item { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.char-item { animation:charFloat 3s ease-in-out infinite alternate; }
+.char-item:nth-child(2) { animation-delay:.6s; }
+.char-item:nth-child(3) { animation-delay:1.2s; }
+.char-item:nth-child(4) { animation-delay:1.8s; }
+.char-emo { font-size:clamp(2.2rem,7vw,3.8rem); }
+.char-lbl { font-size:.68rem; font-weight:900; color:var(--dk); background:rgba(255,255,255,.85); border-radius:8px; padding:2px 8px; }
+
+/* DIALOGUES */
+.dial-section { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+.dial { display:flex; align-items:flex-start; gap:9px; opacity:0; transform:translateX(-16px); transition:opacity .35s ease, transform .35s ease; }
+.dial.show { opacity:1; transform:translateX(0); }
+.dial.right { flex-direction:row-reverse; }
+.dial.right .bbl { border-radius:18px 18px 4px 18px; background:var(--boy); }
+.dial.staff .bbl { background:var(--staff); }
+.dial.narr .bbl { background:var(--narrator); font-style:italic; }
+.av { font-size:1.8rem; min-width:34px; text-align:center; flex-shrink:0; }
+.bbl-wrap { flex:1; max-width:90%; }
+.spk-name { font-size:.66rem; font-weight:900; color:#999; margin-bottom:3px; text-transform:uppercase; letter-spacing:.4px; }
+.bbl { background:var(--girl); border-radius:18px 18px 18px 4px; padding:9px 13px; font-size:clamp(.82rem,2.3vw,.99rem); font-weight:700; color:var(--dk); box-shadow:0 2px 8px rgba(0,0,0,.07); line-height:1.45; }
+.tip { display:block; font-size:.73rem; font-weight:900; color:var(--o); margin-top:5px; }
+.highlight-word { background:linear-gradient(135deg,var(--y),var(--o)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:900; }
+
+/* VOCAB BOX */
+.vocab-box { background:linear-gradient(135deg,#fffde7,#fff5f8); border:2.5px dashed var(--y); border-radius:16px; padding:13px 15px; margin-bottom:12px; opacity:0; max-height:0; overflow:hidden; transition:opacity .4s ease, max-height .5s ease; }
+.vocab-box.open { opacity:1; max-height:400px; }
+.vocab-ttl { font-weight:900; font-size:.78rem; color:var(--o); margin-bottom:8px; text-transform:uppercase; letter-spacing:.5px; }
+.vocab-grid { display:flex; flex-wrap:wrap; gap:7px; }
+.vtag { background:white; border-radius:20px; padding:5px 12px; font-size:.78rem; font-weight:900; border:2.5px solid; cursor:pointer; transition:transform .18s, box-shadow .18s; user-select:none; }
+.vtag:hover { transform:scale(1.1); box-shadow:0 4px 12px rgba(0,0,0,.12); }
+.vtag:active { transform:scale(.92); }
+
+/* QUIZ BOX */
+.quiz-box { background:linear-gradient(135deg,#e8f4ff,#f0fff8); border:2.5px solid var(--b); border-radius:18px; padding:15px; opacity:0; max-height:0; overflow:hidden; transition:opacity .4s ease, max-height .5s ease; }
+.quiz-box.open { opacity:1; max-height:500px; }
+.quiz-q { font-size:clamp(.88rem,2.5vw,1.02rem); font-weight:800; color:var(--dk); margin-bottom:11px; }
+.quiz-opts { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.qbtn { background:white; border:2.5px solid #e0e0e0; border-radius:13px; padding:9px 12px; font-size:.82rem; font-weight:800; cursor:pointer; transition:all .18s; font-family:'Nunito',sans-serif; color:var(--dk); text-align:left; line-height:1.3; }
+.qbtn:hover:not(:disabled) { border-color:var(--b); background:#e8f4ff; transform:scale(1.02); }
+.qbtn.ok { background:#d4edda; border-color:var(--g); color:#155724; }
+.qbtn.no { background:#f8d7da; border-color:var(--r); color:#721c24; }
+.quiz-res { margin-top:10px; text-align:center; font-weight:900; font-size:.92rem; display:none; }
+.quiz-res.show { display:block; animation:popIn .3s ease; }
+.quiz-res.good { color:var(--g); }
+.quiz-res.bad { color:var(--r); }
+
+/* SCENE PROGRESS DOTS */
+.scene-dots { display:flex; justify-content:center; gap:7px; margin:10px 0 6px; flex-wrap:wrap; }
+.sdot { width:10px; height:10px; border-radius:50%; background:#e0e0e0; transition:all .3s; cursor:pointer; }
+.sdot.done { background:var(--g); }
+.sdot.active { background:var(--o); transform:scale(1.5); }
+
+/* BREAK CARD */
+.break-card { background:linear-gradient(135deg,#fff9c4,#ffe0b2); border-radius:28px; padding:28px; text-align:center; box-shadow:0 6px 30px rgba(0,0,0,.1); margin-bottom:14px; animation:fadeUp .5s ease; }
+.break-emoji { font-size:4rem; display:block; animation:logoBounce 2s ease-in-out infinite alternate; margin-bottom:12px; }
+.break-title { font-family:'Baloo 2',cursive; font-size:clamp(1.6rem,5vw,2.2rem); font-weight:900; color:var(--dk); margin-bottom:8px; }
+.break-msg { font-size:clamp(.9rem,2.5vw,1.05rem); font-weight:700; color:#666; margin-bottom:20px; line-height:1.55; }
+.break-timer { font-family:'Baloo 2',cursive; font-size:2.5rem; font-weight:900; color:var(--o); }
+
+/* FINAL REVIEW */
+.review-card { background:white; border-radius:22px; padding:20px; box-shadow:0 4px 20px rgba(0,0,0,.08); margin-bottom:12px; animation:fadeUp .4s ease backwards; }
+.review-unit-title { font-family:'Baloo 2',cursive; font-size:1.1rem; font-weight:900; color:var(--dk); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.review-words { display:flex; flex-wrap:wrap; gap:7px; }
+.rw { border-radius:20px; padding:5px 13px; font-size:.8rem; font-weight:900; color:white; }
+
+/* FINAL QUIZ */
+.fq-card { background:white; border-radius:22px; padding:20px; box-shadow:0 4px 20px rgba(0,0,0,.08); margin-bottom:12px; animation:fadeUp .4s ease backwards; }
+.fq-num { font-size:.7rem; font-weight:900; color:var(--p); text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }
+.fq-q { font-size:clamp(.9rem,2.5vw,1.02rem); font-weight:800; color:var(--dk); margin-bottom:11px; }
+.fq-opts { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.fqbtn { background:#f8f8f8; border:2.5px solid #e8e8e8; border-radius:12px; padding:9px 12px; font-size:.82rem; font-weight:800; cursor:pointer; font-family:'Nunito',sans-serif; color:var(--dk); transition:all .18s; text-align:left; }
+.fqbtn:hover:not(:disabled) { border-color:var(--b); background:#e8f4ff; }
+.fqbtn.ok { background:#d4edda; border-color:var(--g); color:#155724; }
+.fqbtn.no { background:#f8d7da; border-color:var(--r); color:#721c24; }
+.score-section { background:linear-gradient(135deg,var(--y),var(--o)); border-radius:22px; padding:26px; text-align:center; margin-top:20px; display:none; animation:popIn .5s ease; }
+.score-section.show { display:block; }
+.score-big { font-family:'Baloo 2',cursive; font-size:3.5rem; font-weight:900; color:white; }
+.score-sub { font-size:1.1rem; font-weight:800; color:white; margin-top:6px; }
+
+/* CELEBRATION */
+#celebration { display:none; text-align:center; padding:28px 14px; animation:fadeUp .8s ease; }
+.cel-trophy { font-size:5.5rem; display:block; animation:logoBounce 1.2s ease-in-out infinite alternate; }
+.cel-title { font-family:'Baloo 2',cursive; font-size:clamp(1.8rem,6vw,3.2rem); font-weight:900;
+  background:linear-gradient(135deg,var(--o),var(--r)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:14px 0 8px; }
+.cel-msg { font-size:clamp(.9rem,2.5vw,1.15rem); font-weight:700; color:var(--dk); line-height:1.6; margin-bottom:22px; }
+.stars-display { font-size:2.5rem; letter-spacing:6px; margin:12px 0; animation:popIn .6s ease; }
+.learned-cloud { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin:16px 0; }
+.lword { border-radius:20px; padding:5px 14px; font-size:.82rem; font-weight:900; color:white; animation:popIn .3s ease backwards; }
+
+/* BUTTONS */
+.btn { font-family:'Baloo 2',cursive; font-weight:900; border:none; border-radius:50px; cursor:pointer; transition:all .2s; box-shadow:0 4px 15px rgba(0,0,0,.13); display:inline-flex; align-items:center; gap:6px; }
+.btn:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(0,0,0,.18); }
+.btn:active { transform:translateY(0); }
+.btn-lg { font-size:1.15rem; padding:15px 32px; }
+.btn-md { font-size:.95rem; padding:11px 22px; }
+.btn-sm { font-size:.82rem; padding:8px 16px; }
+.btn-start { background:linear-gradient(135deg,var(--o),var(--r)); color:white; }
+.btn-next { background:linear-gradient(135deg,var(--g),var(--t)); color:white; }
+.btn-prev { background:linear-gradient(135deg,#b2bec3,#95a5a6); color:white; }
+.btn-unit { background:linear-gradient(135deg,var(--p),var(--b)); color:white; }
+.btn-replay { background:linear-gradient(135deg,var(--pk),var(--p)); color:white; }
+.btn-quiz { background:linear-gradient(135deg,var(--b),var(--p)); color:white; }
+.nav-row { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px; }
+.nav-center { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:16px; }
+
+/* CONFETTI */
+.conf { position:fixed; pointer-events:none; z-index:9999; border-radius:2px; animation:confFall linear forwards; }
+@keyframes confFall { 0%{opacity:1;transform:translateY(-10px) rotate(0deg);} 100%{opacity:0;transform:translateY(110vh) rotate(720deg);} }
+
+/* UTILITIES */
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+@keyframes popIn { 0%{transform:scale(0);} 70%{transform:scale(1.15);} 100%{transform:scale(1);} }
+.hidden { display:none !important; }
+.text-center { text-align:center; }
+.mt8 { margin-top:8px; }
+.mt16 { margin-top:16px; }
+
+@media(max-width:520px) {
+  .quiz-opts, .fq-opts { grid-template-columns:1fr; }
+  .chars-row { gap:10px; }
+  .units-grid { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-anim" id="bgAnim"></div>
+
+<div id="app">
+
+  <!-- ═══ TITLE SCREEN ═══ -->
+  <div id="title-screen">
+    <span class="main-logo">🍽️</span>
+    <div class="main-title">Let's Go to a Restaurant!</div>
+    <div class="main-sub">🌟 A Full 2-Hour English Adventure for Kids 🌟</div>
+
+    <div class="hero-chars">
+      <div class="hero-char"><span class="hc-emo">👧</span><span class="hc-name">Sofia (Girl)</span></div>
+      <div class="hero-char"><span class="hc-emo">👦</span><span class="hc-name">Leo (Boy)</span></div>
+      <div class="hero-char"><span class="hc-emo">👩‍🍳</span><span class="hc-name">Priya (Waitress)</span></div>
+      <div class="hero-char"><span class="hc-emo">👨‍💼</span><span class="hc-name">Max (Manager)</span></div>
+    </div>
+
+    <div class="time-badge" style="background:linear-gradient(135deg,var(--p),var(--b));color:white;border-radius:30px;padding:8px 20px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;">
+      ⏱️ 12 Units &nbsp;•&nbsp; 42 Scenes &nbsp;•&nbsp; ~2 Hours
+    </div>
+
+    <div class="units-grid" id="units-preview"></div>
+
+    <div class="nav-center">
+      <button class="btn btn-start btn-lg" onclick="startLesson()">▶ Start the Adventure!</button>
+    </div>
+  </div>
+
+  <!-- ═══ LESSON SCREEN ═══ -->
+  <div id="lesson-screen" class="hidden">
+    <div id="top-bar">
+      <div class="tbi">
+        <button class="tb-back btn btn-sm btn-prev" onclick="goHome()">🏠 Home</button>
+        <div class="tb-info">
+          <div class="tb-unit" id="tb-unit">Unit 1</div>
+          <div class="tb-scene" id="tb-scene">Welcome!</div>
+        </div>
+        <div class="tb-prog-wrap">
+          <div class="tb-prog-label">Progress</div>
+          <div class="tb-prog-bar"><div class="tb-prog-fill" id="tb-prog" style="width:0%"></div></div>
+        </div>
+        <div class="tb-timer" id="tb-timer">0:00</div>
+      </div>
+    </div>
+
+    <div class="scene-dots" id="scene-dots"></div>
+    <div id="scene-container"></div>
+
+    <div class="nav-row" id="nav-row">
+      <button class="btn btn-prev btn-md" id="btn-prev" onclick="prevStep()">◀ Back</button>
+      <button class="btn btn-next btn-md" id="btn-next" onclick="nextStep()">Next ▶</button>
+    </div>
+  </div>
+
+  <!-- ═══ FINAL REVIEW + QUIZ ═══ -->
+  <div id="final-screen" class="hidden">
+    <div style="text-align:center;padding:20px 10px 10px;">
+      <div style="font-size:3rem;margin-bottom:8px;animation:logoBounce 2s ease-in-out infinite alternate">🎓</div>
+      <div style="font-family:'Baloo 2',cursive;font-size:clamp(1.8rem,6vw,3rem);font-weight:900;background:linear-gradient(135deg,var(--p),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;">Words We Learned!</div>
+      <p style="font-weight:700;color:#777;font-size:.95rem;margin-bottom:22px;">Tap any word to remember it! 🧠</p>
+    </div>
+    <div id="review-container"></div>
+
+    <div style="text-align:center;padding:20px 10px 10px;">
+      <div style="font-size:3rem;margin-bottom:8px;">🎯</div>
+      <div style="font-family:'Baloo 2',cursive;font-size:clamp(1.6rem,5vw,2.6rem);font-weight:900;color:var(--dk);margin-bottom:6px;">Final Quiz!</div>
+      <p style="font-weight:700;color:#777;font-size:.95rem;margin-bottom:18px;">10 questions — let's see what you know! 💪</p>
+    </div>
+    <div id="fquiz-container"></div>
+    <div class="score-section" id="score-section">
+      <div class="score-big" id="score-num">0/10</div>
+      <div class="score-sub" id="score-msg">Let's see!</div>
+    </div>
+    <div class="nav-center" style="margin-top:20px;">
+      <button class="btn btn-replay btn-lg" onclick="showCelebration()">🎉 Finish & Celebrate!</button>
+    </div>
+  </div>
+
+  <!-- ═══ CELEBRATION ═══ -->
+  <div id="celebration">
+    <span class="cel-trophy">🏆</span>
+    <div class="cel-title">You Are Amazing!</div>
+    <div class="cel-msg">You completed the full 2-hour<br>Restaurant English Class! 🎉🍽️</div>
+    <div class="stars-display">⭐⭐⭐⭐⭐</div>
+    <p style="font-weight:800;color:#777;margin-bottom:10px;font-size:.95rem;">All the words you learned today:</p>
+    <div class="learned-cloud" id="learned-cloud"></div>
+    <div class="nav-center" style="margin-top:24px;">
+      <button class="btn btn-start btn-lg" onclick="replayAll()">🔄 Start Again!</button>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<script>
+/* ══════════════════════════════════════════════
+   ALL LESSON DATA — 12 UNITS × 3-4 SCENES EACH
+══════════════════════════════════════════════ */
+const UNITS = [
+  /* ── UNIT 1 ── */
+  {
+    id:1, color:'#FF6B35', lightBg:'linear-gradient(135deg,#fff8e1,#fff3e0)',
+    emoji:'🚶', title:'Getting Ready!',
+    desc:'Sofia and Leo are going to a restaurant! Let\'s see how they get ready and talk to each other.',
+    scenes:[
+      {
+        emoji:'🌤️', title:'Outside the Restaurant', sub:'Unit 1 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#e8f5e9)', label:'🌇 Outside on the street 🌇',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Leo! I am so hungry today! 🍕',tip:'💡 "Hungry" = your tummy wants food!'},
+          {av:'👦',name:'Leo',side:'right',text:'Me too, Sofia! Let\'s go to a restaurant!',tip:'💡 "Let\'s go" = we go together!'},
+          {av:'👧',name:'Sofia',side:'left',text:'What kind of food do you want to eat?',tip:'💡 "What kind?" = asking for a type!'},
+          {av:'👦',name:'Leo',side:'right',text:'I want pizza! 🍕 What about you?',tip:'💡 "What about you?" = asking a friend!'},
+          {av:'👧',name:'Sofia',side:'left',text:'I want pasta! 🍝 Let\'s go quickly!',tip:'💡 "Quickly" = fast, without waiting!'},
+        ],
+        vocab:[{w:'😋 Hungry',c:'#FF6B35'},{w:'🍕 Pizza',c:'#FF4757'},{w:'🍝 Pasta',c:'#9B59B6'},{w:'🏃 Quickly',c:'#2ECC71'},{w:'🤝 Let\'s go',c:'#3498DB'}],
+        quiz:{q:'🤔 You want food. How do you feel?',opts:['I am happy 😄','I am hungry 😋','I am sleeping 😴','I am cold 🥶'],ans:1}
+      },
+      {
+        emoji:'🏠', title:'We See the Restaurant!', sub:'Unit 1 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fce4ec,#f3e5f5)', label:'🍽️ Sunshine Restaurant 🍽️',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'Look! There is a restaurant! 🏠',tip:'💡 "There is" = we can see something!'},
+          {av:'👧',name:'Sofia',side:'left',text:'It looks nice and colourful! 🌈',tip:'💡 "Looks nice" = it seems pretty!'},
+          {av:'👦',name:'Leo',side:'right',text:'The sign says "Sunshine Restaurant". 🌟',tip:'💡 A "sign" = big letters on a building!'},
+          {av:'👧',name:'Sofia',side:'left',text:'And it says "Open"! We can go inside!',tip:'💡 "Open" = we are welcome to enter!'},
+          {av:'👦',name:'Leo',side:'right',text:'Great! Let\'s open the door! 🚪',tip:''},
+        ],
+        vocab:[{w:'🏠 Restaurant',c:'#FF6B35'},{w:'🌟 Sign',c:'#FFD93D'},{w:'✅ Open',c:'#2ECC71'},{w:'❌ Closed',c:'#FF4757'},{w:'🚪 Door',c:'#3498DB'}],
+        quiz:{q:'🤔 The sign says "Open". What does that mean?',opts:['Go away!','Come in, we are ready!','We have no food.','Come back tomorrow.'],ans:1}
+      },
+      {
+        emoji:'🚪', title:'Let\'s Go Inside!', sub:'Unit 1 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#e3f2fd)', label:'🚪 The Restaurant Entrance 🚪',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Leo, you open the door first!',tip:'💡 "First" = before everyone else!'},
+          {av:'👦',name:'Leo',side:'right',text:'Okay! *opens the door* After you, Sofia! 🚪',tip:'💡 "After you" = please go before me — very polite!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Thank you, Leo! That is very kind! 💖',tip:'💡 "Kind" = nice and caring!'},
+          {av:'🎙️',name:'Narrator',side:'narr',text:'Sofia and Leo walk into the restaurant. It smells wonderful! 🌸',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'Wow! It smells so good in here! 😍',tip:'💡 "Smells good" = a nice smell in your nose!'},
+        ],
+        vocab:[{w:'🚪 Enter',c:'#FF6B35'},{w:'🤝 After you',c:'#2ECC71'},{w:'💖 Kind',c:'#FF6EB4'},{w:'👃 Smell',c:'#9B59B6'},{w:'😍 Wonderful',c:'#FFD93D'}],
+        quiz:{q:'🤔 You let your friend go first. What do you say?',opts:['Go away!','Me first!','After you! 🚪','Stop!'],ans:2}
+      },
+    ]
+  },
+
+  /* ── UNIT 2 ── */
+  {
+    id:2, color:'#FF4757', lightBg:'linear-gradient(135deg,#fce4ec,#ffeeff)',
+    emoji:'👋', title:'Welcome at the Door!',
+    desc:'A friendly manager welcomes Sofia and Leo. Learn how to greet people and ask for a table!',
+    scenes:[
+      {
+        emoji:'👨‍💼', title:'The Manager Greets Them', sub:'Unit 2 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#fff3e0,#fce4ec)', label:'🌟 The Welcome Area 🌟',
+          chars:[{e:'👨‍💼',n:'Max (Manager)'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Hello! Welcome to Sunshine Restaurant! 🌟',tip:'💡 "Welcome" = we are happy you are here!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Hello! Thank you very much! 😊',tip:'💡 "Thank you very much" = a big thank you!'},
+          {av:'👦',name:'Leo',side:'right',text:'Good afternoon! My name is Leo.',tip:'💡 "Good afternoon" = hello in the afternoon!'},
+          {av:'👧',name:'Sofia',side:'left',text:'And my name is Sofia. Nice to meet you!',tip:'💡 "Nice to meet you" = happy to see you!'},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Nice to meet you too! I am Max, the manager. 😊',tip:'💡 "Manager" = the person in charge!'},
+        ],
+        vocab:[{w:'👋 Hello',c:'#FF6B35'},{w:'🌟 Welcome',c:'#FFD93D'},{w:'🙏 Thank you',c:'#2ECC71'},{w:'☀️ Good afternoon',c:'#3498DB'},{w:'🤝 Nice to meet you',c:'#FF6EB4'}],
+        quiz:{q:'🤔 Someone arrives. What do you say?',opts:['Go away please!','Welcome! Hello! 👋','We are closed!','I am busy!'],ans:1}
+      },
+      {
+        emoji:'🪑', title:'Asking for a Table', sub:'Unit 2 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#fff9c4)', label:'🪑 Choosing a Table 🪑',
+          chars:[{e:'👨‍💼',n:'Max'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'How many people are in your group today?',tip:'💡 "How many?" = asking for a number!'},
+          {av:'👦',name:'Leo',side:'right',text:'Just two people, please. Only Sofia and me.',tip:'💡 "Just two" = only 2, no more!'},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Would you like a window seat or an inside seat?',tip:'💡 "Would you like?" = a polite "do you want?"'},
+          {av:'👧',name:'Sofia',side:'left',text:'A window seat, please! I love the view! 🌅',tip:'💡 "View" = what you can see from a place!'},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Perfect! Please follow me. Your table is ready! 🚶',tip:'💡 "Follow me" = walk behind me!'},
+        ],
+        vocab:[{w:'🔢 How many?',c:'#FF6B35'},{w:'🪑 Window seat',c:'#3498DB'},{w:'🏠 Inside seat',c:'#9B59B6'},{w:'🌅 View',c:'#2ECC71'},{w:'👣 Follow me',c:'#FF4757'}],
+        quiz:{q:'🤔 You want a table near the window. What do you say?',opts:['I want to stand!','A window seat please! 🌅','No table for me!','I will sit on the floor!'],ans:1}
+      },
+      {
+        emoji:'😊', title:'Sitting Down', sub:'Unit 2 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#e8f5e9)', label:'🪑 At the Table 🪑',
+          chars:[{e:'👨‍💼',n:'Max'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'🎙️',name:'Narrator',side:'narr',text:'Max shows Sofia and Leo to their table by the window. 🌟',tip:''},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Here is your table! Please sit down and make yourself comfortable. 😊',tip:'💡 "Comfortable" = feeling good and relaxed!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Oh, this is a lovely table! Thank you, Max!',tip:'💡 "Lovely" = very nice and beautiful!'},
+          {av:'👦',name:'Leo',side:'right',text:'Can I sit here, next to the window?',tip:'💡 "Next to" = beside, very close to!'},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Of course! Your waitress will come soon. Enjoy! 🌟',tip:'💡 "Soon" = in a short time, not long!'},
+        ],
+        vocab:[{w:'🪑 Sit down',c:'#FF6B35'},{w:'😌 Comfortable',c:'#2ECC71'},{w:'💛 Lovely',c:'#FFD93D'},{w:'↔️ Next to',c:'#3498DB'},{w:'⏳ Soon',c:'#9B59B6'}],
+        quiz:{q:'🤔 The manager says "Make yourself comfortable." What does that mean?',opts:['Please stand up!','Relax and feel good! 😌','Eat quickly!','Pay now!'],ans:1}
+      },
+    ]
+  },
+
+  /* ── UNIT 3 ── */
+  {
+    id:3, color:'#9B59B6', lightBg:'linear-gradient(135deg,#f3e5f5,#ede7f6)',
+    emoji:'📋', title:'Reading the Menu!',
+    desc:'Priya the waitress brings the menu. Learn how to read food words and ask questions about dishes!',
+    scenes:[
+      {
+        emoji:'👩‍🍳', title:'Meet Waitress Priya!', sub:'Unit 3 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#fce4ec,#e8f5e9)', label:'🌟 Here comes the waitress! 🌟',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Hi there! My name is Priya. I am your waitress today! 😄',tip:'💡 "Waitress" = the person who brings your food!'},
+          {av:'👦',name:'Leo',side:'right',text:'Hi Priya! Nice to meet you!',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'Can we see the menu, please? 📋',tip:'💡 "Menu" = the list of all the food!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Of course! Here are your menus. Take your time! ⏳',tip:'💡 "Take your time" = no hurry, look slowly!'},
+          {av:'👦',name:'Leo',side:'right',text:'Thank you, Priya! The menu looks very colourful! 🌈',tip:''},
+        ],
+        vocab:[{w:'📋 Menu',c:'#9B59B6'},{w:'👩‍🍳 Waitress',c:'#FF6EB4'},{w:'⏳ Take your time',c:'#3498DB'},{w:'🌈 Colourful',c:'#FF6B35'},{w:'😄 Nice to meet you',c:'#2ECC71'}],
+        quiz:{q:'🤔 You want to see the food list. What do you ask?',opts:['Can we see the menu? 📋','Where is the toilet?','I want to sleep.','Can we go home?'],ans:0}
+      },
+      {
+        emoji:'🍕', title:'Food on the Menu — Part 1', sub:'Unit 3 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fff3e0,#fce4ec)', label:'🍽️ Let\'s learn food words! 🍽️',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'I can see pizza! 🍕 I love pizza!',tip:'💡 Pizza has cheese and tomato on bread!'},
+          {av:'👧',name:'Sofia',side:'left',text:'I see pasta! 🍝 Pasta is like noodles with sauce.',tip:'💡 Pasta comes in many shapes!'},
+          {av:'👦',name:'Leo',side:'right',text:'There is also a burger! 🍔 A burger has bread and meat.',tip:'💡 A burger is very popular food!'},
+          {av:'👧',name:'Sofia',side:'left',text:'And salad! 🥗 Salad has vegetables. It is healthy!',tip:'💡 "Healthy" = good for your body!'},
+          {av:'👦',name:'Leo',side:'right',text:'I can also see soup! 🍲 Soup is hot liquid food.',tip:'💡 Soup keeps you warm on cold days!'},
+        ],
+        vocab:[{w:'🍕 Pizza',c:'#FF4757'},{w:'🍝 Pasta',c:'#FF6B35'},{w:'🍔 Burger',c:'#FFD93D'},{w:'🥗 Salad',c:'#2ECC71'},{w:'🍲 Soup',c:'#3498DB'}],
+        quiz:{q:'🤔 Which food is made with vegetables and is healthy?',opts:['Pizza 🍕','Burger 🍔','Salad 🥗','Soup 🍲'],ans:2}
+      },
+      {
+        emoji:'🍰', title:'Food on the Menu — Part 2', sub:'Unit 3 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#e3f2fd)', label:'🍰 More yummy food! 🍰',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Ooh! I see rice! 🍚 Rice is soft and white.',tip:'💡 Rice is eaten in many countries!'},
+          {av:'👦',name:'Leo',side:'right',text:'And chicken! 🍗 Chicken is a type of meat.',tip:'💡 Chicken is very popular food!'},
+          {av:'👧',name:'Sofia',side:'left',text:'There is also bread! 🍞 I love warm bread!',tip:'💡 Bread can be white or brown!'},
+          {av:'👦',name:'Leo',side:'right',text:'And for sweet things — cake and ice cream! 🍰🍦',tip:'💡 Sweet food is called "dessert"!'},
+          {av:'👧',name:'Sofia',side:'left',text:'I want ice cream after my food! 🍦 Yummy!',tip:'💡 "Yummy" = very delicious and tasty!'},
+        ],
+        vocab:[{w:'🍚 Rice',c:'#9B59B6'},{w:'🍗 Chicken',c:'#FF6B35'},{w:'🍞 Bread',c:'#FFD93D'},{w:'🍰 Cake',c:'#FF6EB4'},{w:'🍦 Ice cream',c:'#3498DB'}],
+        quiz:{q:'🤔 What do we call sweet food at the END of a meal?',opts:['Starter','Main course','Dessert 🍰','Drink'],ans:2}
+      },
+      {
+        emoji:'🧃', title:'Drinks on the Menu', sub:'Unit 3 · Scene 4',
+        illus:{bg:'linear-gradient(135deg,#e0f7fa,#e8f5e9)', label:'🥤 Let\'s learn drink words! 🥤',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'Let\'s look at the drinks! 💧 I see water.',tip:'💡 Water is the most important drink!'},
+          {av:'👧',name:'Sofia',side:'left',text:'I see orange juice! 🧃 Juice comes from fruit.',tip:'💡 You can have apple, grape, or orange juice!'},
+          {av:'👦',name:'Leo',side:'right',text:'There is also milk! 🥛 Milk is white and good for you.',tip:'💡 Milk makes your bones strong!'},
+          {av:'👧',name:'Sofia',side:'left',text:'And lemonade! 🍋 Lemonade is sweet and sour.',tip:'💡 "Sour" = like a lemon taste!'},
+          {av:'👦',name:'Leo',side:'right',text:'Hot chocolate! ☕ That is warm and sweet. Yum!',tip:'💡 Hot chocolate is perfect in winter!'},
+        ],
+        vocab:[{w:'💧 Water',c:'#3498DB'},{w:'🧃 Juice',c:'#FF6B35'},{w:'🥛 Milk',c:'#95a5a6'},{w:'🍋 Lemonade',c:'#FFD93D'},{w:'☕ Hot chocolate',c:'#795548'}],
+        quiz:{q:'🤔 What drink comes from fruit?',opts:['Water 💧','Milk 🥛','Juice 🧃','Hot chocolate ☕'],ans:2}
+      },
+    ]
+  },
+
+  /* ── UNIT 4 ── */
+  {
+    id:4, color:'#3498DB', lightBg:'linear-gradient(135deg,#e3f2fd,#e0f7fa)',
+    emoji:'🛎️', title:'Ordering Food!',
+    desc:'Time to order! Learn how to politely ask for food and drinks using "I would like..."',
+    scenes:[
+      {
+        emoji:'✋', title:'Are You Ready to Order?', sub:'Unit 4 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#e8f5e9)', label:'✋ Priya is here! ✋',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Are you ready to order? 😊',tip:'💡 "Are you ready?" = have you decided?'},
+          {av:'👧',name:'Sofia',side:'left',text:'Yes, we are ready! I would like pasta, please. 🍝',tip:'💡 "I would like" = polite way to say "I want"!'},
+          {av:'👦',name:'Leo',side:'right',text:'I would like a pizza, please. 🍕',tip:'💡 Always add "please" — it is very polite! 🙏'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Great choices! What would you like to drink?',tip:'💡 "What would you like?" = what do you want?'},
+          {av:'👧',name:'Sofia',side:'left',text:'I would like orange juice, please. 🧃',tip:''},
+        ],
+        vocab:[{w:'🛎️ Order',c:'#FF6B35'},{w:'✅ Ready',c:'#2ECC71'},{w:'🍽️ I would like...',c:'#9B59B6'},{w:'🙏 Please',c:'#FF4757'},{w:'🥤 To drink',c:'#3498DB'}],
+        quiz:{q:'🤔 How do you politely ask for pizza?',opts:['Give me pizza NOW!','I would like pizza please! 🍕','PIZZA PIZZA PIZZA!','I need pizza immediately!'],ans:1}
+      },
+      {
+        emoji:'📝', title:'Leo Orders His Food', sub:'Unit 4 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fff3e0,#fce4ec)', label:'📝 Leo is ordering! 📝',
+          chars:[{e:'👦',n:'Leo'},{e:'👩‍🍳',n:'Priya'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'I would like a pizza, please. 🍕',tip:''},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'What size pizza? Small, medium, or large?',tip:'💡 "Size" = how big something is!'},
+          {av:'👦',name:'Leo',side:'right',text:'Medium, please. Not too big, not too small! 😄',tip:'💡 Medium = in the middle, not big or small!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'And to drink?',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'Water, please. Just water. Thank you! 💧',tip:'💡 "Just" = only, nothing else!'},
+        ],
+        vocab:[{w:'📏 Size',c:'#FF6B35'},{w:'🔵 Small',c:'#3498DB'},{w:'🟡 Medium',c:'#FFD93D'},{w:'🔴 Large',c:'#FF4757'},{w:'💧 Just water',c:'#2ECC71'}],
+        quiz:{q:'🤔 You want something that is not big and not small. What size is it?',opts:['Large','Small','Medium 🟡','Extra large'],ans:2}
+      },
+      {
+        emoji:'✅', title:'Priya Checks the Order', sub:'Unit 4 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#e3f2fd)', label:'✅ Checking the order! ✅',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Let me repeat your order. So that is pasta, orange juice, medium pizza, and water. Is that correct? ✅',tip:'💡 "Repeat" = say it again to make sure!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Yes, that is correct! Thank you, Priya!',tip:'💡 "Correct" = right, no mistakes!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Anything else? Any starters or dessert now?',tip:'💡 "Anything else?" = do you want more?'},
+          {av:'👦',name:'Leo',side:'right',text:'No thank you! That is all for now. 😊',tip:'💡 "That is all" = we do not want more!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Perfect! Your food will be ready very soon! ⏳',tip:''},
+        ],
+        vocab:[{w:'🔁 Repeat',c:'#9B59B6'},{w:'✅ Correct',c:'#2ECC71'},{w:'➕ Anything else?',c:'#FF6B35'},{w:'🛑 That is all',c:'#FF4757'},{w:'⏳ Very soon',c:'#3498DB'}],
+        quiz:{q:'🤔 You do not want anything else. What do you say?',opts:['Give me more!','That is all, thank you! 🛑','I am still thinking.','Yes, everything please!'],ans:1}
+      },
+    ]
+  },
+
+  /* ── UNIT 5 ── */
+  {
+    id:5, color:'#2ECC71', lightBg:'linear-gradient(135deg,#e8f5e9,#f1f8e9)',
+    emoji:'⏳', title:'Waiting & Small Talk!',
+    desc:'The food is cooking! Sofia and Leo wait and have a fun conversation. Learn describing words!',
+    scenes:[
+      {
+        emoji:'💬', title:'Talking While We Wait', sub:'Unit 5 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#fff9c4)', label:'⏳ Waiting for food... ⏳',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Leo, this restaurant is very big! 🏠',tip:'💡 "Big" = large, lots of space!'},
+          {av:'👦',name:'Leo',side:'right',text:'Yes! And it is very bright and colourful! 🌈',tip:'💡 "Bright" = full of light, not dark!'},
+          {av:'👧',name:'Sofia',side:'left',text:'It is a little noisy too. So many people! 👥',tip:'💡 "Noisy" = lots of sounds, loud!'},
+          {av:'👦',name:'Leo',side:'right',text:'Yes! But I like it. It feels happy and busy! 😄',tip:'💡 "Busy" = lots of things happening!'},
+          {av:'👧',name:'Sofia',side:'left',text:'I am so excited to eat! I cannot wait! 🎉',tip:'💡 "Cannot wait" = very excited!'},
+        ],
+        vocab:[{w:'🏠 Big',c:'#FF6B35'},{w:'💡 Bright',c:'#FFD93D'},{w:'🔊 Noisy',c:'#FF4757'},{w:'😊 Happy',c:'#2ECC71'},{w:'🐝 Busy',c:'#3498DB'}],
+        quiz:{q:'🤔 The restaurant has many people and lots of noise. What is it?',opts:['Quiet','Empty','Busy and noisy 🔊','Boring'],ans:2}
+      },
+      {
+        emoji:'🧃', title:'Drinks Arrive First!', sub:'Unit 5 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#e0f7fa,#e8f5e9)', label:'🧃 Here come the drinks! 🧃',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Here are your drinks! Orange juice for Sofia and water for Leo. 🧃💧',tip:'💡 Drinks come before food usually!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Thank you so much, Priya! 🙏',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'Yes, thank you! We were very thirsty! 😅',tip:'💡 "Thirsty" = your body needs a drink!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Your food will be ready in about five minutes! 🕐',tip:'💡 "In about" = approximately, around!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Perfect! We will wait happily! 😊',tip:''},
+        ],
+        vocab:[{w:'😅 Thirsty',c:'#3498DB'},{w:'🕐 Five minutes',c:'#9B59B6'},{w:'⏰ In about',c:'#FF6B35'},{w:'😊 Happily',c:'#2ECC71'},{w:'🙏 Thank you',c:'#FF4757'}],
+        quiz:{q:'🤔 You need a drink because your body is dry. How do you feel?',opts:['Hungry','Tired','Thirsty 💧','Cold'],ans:2}
+      },
+    ]
+  },
+
+  /* ── UNIT 6 ── */
+  {
+    id:6, color:'#1ABC9C', lightBg:'linear-gradient(135deg,#e0f2f1,#e0f7fa)',
+    emoji:'😋', title:'Food Arrives!',
+    desc:'The food is here! Learn how to describe food using taste and texture words — and thank the waitress!',
+    scenes:[
+      {
+        emoji:'🍽️', title:'The Food is Here!', sub:'Unit 6 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#fff3e0,#e8f5e9)', label:'🍽️ Here comes the food! 🍽️',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Here is your pasta, Sofia! 🍝 And your pizza, Leo! 🍕 Enjoy your meal!',tip:'💡 "Enjoy your meal!" = have a delicious time!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Oh wow! It looks so yummy! Thank you, Priya!',tip:'💡 "Looks yummy" = it seems very tasty!'},
+          {av:'👦',name:'Leo',side:'right',text:'My pizza is huge! 😮 It is very large!',tip:'💡 "Huge" = very very big!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Enjoy! I will check on you in a few minutes. 😊',tip:'💡 "Check on you" = come back to see if you are okay!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Let\'s eat! Mmm... this smells amazing! 😍',tip:''},
+        ],
+        vocab:[{w:'🍽️ Enjoy your meal',c:'#2ECC71'},{w:'😋 Yummy',c:'#FF6B35'},{w:'😮 Huge',c:'#FF4757'},{w:'👁️ Looks good',c:'#3498DB'},{w:'😍 Amazing',c:'#9B59B6'}],
+        quiz:{q:'🤔 The food has arrived. What does Priya say?',opts:['Goodbye!','Enjoy your meal! 🍽️','Pay now!','Do not eat!'],ans:1}
+      },
+      {
+        emoji:'😋', title:'Describing How Food Tastes', sub:'Unit 6 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fce4ec,#fff9c4)', label:'😋 Taste the words! 😋',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'Mmm! My pizza is so delicious! 😋',tip:'💡 "Delicious" = very very tasty!'},
+          {av:'👧',name:'Sofia',side:'left',text:'My pasta is warm and soft! I love it! 🍝',tip:'💡 "Warm" = a little hot, comfortable!'},
+          {av:'👦',name:'Leo',side:'right',text:'The pizza crust is crunchy! Crunch crunch! 🍕',tip:'💡 "Crunchy" = makes a crunch noise when you eat!'},
+          {av:'👧',name:'Sofia',side:'left',text:'The sauce on my pasta is a little salty. But still good! 😊',tip:'💡 "Salty" = tastes like salt!'},
+          {av:'👦',name:'Leo',side:'right',text:'The cheese on my pizza is sweet! I love sweet food!',tip:'💡 "Sweet" = tastes like sugar!'},
+        ],
+        vocab:[{w:'😋 Delicious',c:'#FF6B35'},{w:'🌡️ Warm',c:'#FF4757'},{w:'🥐 Crunchy',c:'#FFD93D'},{w:'🧂 Salty',c:'#95a5a6'},{w:'🍬 Sweet',c:'#FF6EB4'}],
+        quiz:{q:'🤔 You bite the food and it makes a "crunch" noise. How is it?',opts:['Salty','Sweet','Soft','Crunchy 🥐'],ans:3}
+      },
+      {
+        emoji:'❤️', title:'Waitress Checks In', sub:'Unit 6 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#e3f2fd)', label:'❤️ How is everything? ❤️',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Hi! How is everything? Is the food good? 😊',tip:'💡 "How is everything?" = are you happy with your food?'},
+          {av:'👧',name:'Sofia',side:'left',text:'It is wonderful, Priya! The pasta is perfect! 😍',tip:'💡 "Wonderful" = excellent, very very good!'},
+          {av:'👦',name:'Leo',side:'right',text:'The pizza is fantastic! One of the best I have eaten!',tip:'💡 "Fantastic" = amazing, super great!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'I am so happy to hear that! Do you need anything?',tip:'💡 "Happy to hear that" = good news makes me smile!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Can I have some more bread, please? 🍞',tip:'💡 "Some more" = another piece of something!'},
+        ],
+        vocab:[{w:'🤩 Wonderful',c:'#9B59B6'},{w:'🌟 Fantastic',c:'#FF6B35'},{w:'😊 Perfect',c:'#2ECC71'},{w:'➕ Some more',c:'#3498DB'},{w:'🍞 More bread',c:'#FFD93D'}],
+        quiz:{q:'🤔 The food is excellent! What word can you use?',opts:['Terrible!','Boring.','Wonderful! 🤩','Not good.'],ans:2}
+      },
+    ]
+  },
+
+  /* ── UNIT 7 ── */
+  {
+    id:7, color:'#FF6EB4', lightBg:'linear-gradient(135deg,#fce4ec,#f8bbd0)',
+    emoji:'🆘', title:'Problems & Solutions!',
+    desc:'Sometimes things go wrong. Learn how to politely ask for help when there is a small problem!',
+    scenes:[
+      {
+        emoji:'🥣', title:'Sofia\'s Soup is Cold!', sub:'Unit 7 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#fce4ec)', label:'🥣 Uh oh! A problem! 🥣',
+          chars:[{e:'👧',n:'Sofia'},{e:'👩‍🍳',n:'Priya'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Excuse me, Priya? I have a small problem. 😟',tip:'💡 "Excuse me" = polite way to get attention!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Of course! What is the problem? I will help!',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'My soup is cold. Can I have a warm one, please? 🥣',tip:'💡 Say the problem politely, without being angry!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Oh, I am so sorry! I will bring a hot one right away!',tip:'💡 "Right away" = immediately, very fast!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Thank you so much, Priya. You are very kind! 💖',tip:''},
+        ],
+        vocab:[{w:'🙋 Excuse me',c:'#FF6B35'},{w:'😟 Problem',c:'#FF4757'},{w:'🥶 Cold',c:'#3498DB'},{w:'🌡️ Warm/Hot',c:'#FF6B35'},{w:'⚡ Right away',c:'#2ECC71'}],
+        quiz:{q:'🤔 Your food is wrong. How do you tell the waitress politely?',opts:['THIS IS WRONG! 😡','Excuse me, there is a small problem. 🙋','I will not eat this!','Call the manager!'],ans:1}
+      },
+      {
+        emoji:'🍴', title:'Leo Drops His Fork', sub:'Unit 7 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fff9c4,#e8f5e9)', label:'🍴 Oops! 🍴',
+          chars:[{e:'👦',n:'Leo'},{e:'👩‍🍳',n:'Priya'}]},
+        dials:[
+          {av:'🎙️',name:'Narrator',side:'narr',text:'Oh no! Leo accidentally drops his fork on the floor! 😮',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'Oops! Excuse me, Priya? My fork fell on the floor.',tip:'💡 "Fell" = dropped down by accident!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'No problem at all! Here is a clean fork for you! 🍴',tip:'💡 "No problem at all" = it is completely fine!'},
+          {av:'👦',name:'Leo',side:'right',text:'Thank you! Also, can I have a napkin, please? 🧻',tip:'💡 A "napkin" = paper or cloth to wipe your mouth!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Of course! Here you go! Anything else?',tip:'💡 "Here you go" = here it is, take it!'},
+        ],
+        vocab:[{w:'🍴 Fork',c:'#9B59B6'},{w:'🔪 Knife',c:'#FF4757'},{w:'🥄 Spoon',c:'#3498DB'},{w:'🧻 Napkin',c:'#2ECC71'},{w:'🍽️ Plate',c:'#FF6B35'}],
+        quiz:{q:'🤔 What do you use to clean your mouth at dinner?',opts:['Your sleeve! 😬','A napkin 🧻','The tablecloth','Your hands'],ans:1}
+      },
+    ]
+  },
+
+  /* ── UNIT 8 ── */
+  {
+    id:8, color:'#FFD93D', lightBg:'linear-gradient(135deg,#fffde7,#fff8e1)',
+    emoji:'🍰', title:'Dessert Time!',
+    desc:'After the main food, it\'s time for something sweet! Learn how to order dessert and express happiness!',
+    scenes:[
+      {
+        emoji:'😊', title:'Finished the Main Course!', sub:'Unit 8 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#e0f7fa)', label:'😊 Plates are empty! 😊',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'I finished all my pasta! It was so good! 😋',tip:'💡 "Finished" = ate everything, nothing left!'},
+          {av:'👦',name:'Leo',side:'right',text:'I finished my pizza too! My tummy is so full! 😄',tip:'💡 "Full" = ate enough, no more space!'},
+          {av:'👧',name:'Sofia',side:'left',text:'But wait — there is always room for dessert! 🍰',tip:'💡 "Room for dessert" = a joke! Always space for sweets!'},
+          {av:'👦',name:'Leo',side:'right',text:'Ha ha! Yes! I want ice cream! 🍦',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'Me too! Let\'s ask Priya! 😄',tip:''},
+        ],
+        vocab:[{w:'✅ Finished',c:'#2ECC71'},{w:'😌 Full',c:'#FF6B35'},{w:'🍰 Dessert',c:'#FF6EB4'},{w:'🍦 Ice cream',c:'#3498DB'},{w:'😄 Excited',c:'#FFD93D'}],
+        quiz:{q:'🤔 You ate all your food. How do you feel?',opts:['Hungry','Full 😌','Thirsty','Bored'],ans:1}
+      },
+      {
+        emoji:'🍦', title:'Ordering Dessert', sub:'Unit 8 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fce4ec,#fff9c4)', label:'🍦 Dessert time! 🍦',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Can I take your plates? Are you finished? 🍽️',tip:'💡 "Take your plates" = clear the table!'},
+          {av:'👦',name:'Leo',side:'right',text:'Yes, please! Everything was delicious! 😋',tip:''},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Wonderful! Would you like to see the dessert menu?',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'Yes, please! I would like chocolate ice cream! 🍦🍫',tip:'💡 Always say what flavour you want!'},
+          {av:'👦',name:'Leo',side:'right',text:'And I would like a slice of chocolate cake, please! 🍰',tip:'💡 "A slice" = one piece of cake!'},
+        ],
+        vocab:[{w:'🍰 Dessert menu',c:'#FF6B35'},{w:'🍫 Chocolate',c:'#795548'},{w:'🍦 Ice cream',c:'#3498DB'},{w:'🎂 Slice of cake',c:'#FF6EB4'},{w:'🍓 Strawberry',c:'#FF4757'}],
+        quiz:{q:'🤔 How do you ask for ONE piece of cake?',opts:['Give me all the cake!','A slice of cake please 🍰','I want cake cake cake!','No cake for me.'],ans:1}
+      },
+    ]
+  },
+
+  /* ── UNIT 9 ── */
+  {
+    id:9, color:'#E67E22', lightBg:'linear-gradient(135deg,#fff3e0,#fff8e1)',
+    emoji:'💰', title:'Asking for the Bill!',
+    desc:'After eating, it\'s time to pay! Learn how to ask for the bill and understand money words.',
+    scenes:[
+      {
+        emoji:'🧾', title:'We Need the Bill!', sub:'Unit 9 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#fff3e0,#fce4ec)', label:'💰 Time to pay! 💰',
+          chars:[{e:'👦',n:'Leo'},{e:'👧',n:'Sofia'},{e:'👩‍🍳',n:'Priya'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'Sofia, we should ask for the bill now.',tip:'💡 "Bill" = a paper that shows how much to pay!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Good idea! Let\'s call Priya. Excuse me, Priya!',tip:''},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Yes? How can I help you?',tip:'💡 "How can I help?" = what do you need?'},
+          {av:'👦',name:'Leo',side:'right',text:'Can we have the bill, please? We are ready to pay. 💳',tip:'💡 "Ready to pay" = we have our money!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Of course! I will bring it right away! 🧾',tip:''},
+        ],
+        vocab:[{w:'🧾 Bill',c:'#FF6B35'},{w:'💰 Pay',c:'#FFD93D'},{w:'💳 Card',c:'#3498DB'},{w:'💵 Cash',c:'#2ECC71'},{w:'💲 Total',c:'#9B59B6'}],
+        quiz:{q:'🤔 How do you ask for the bill politely?',opts:['How much?! 😠','Can we have the bill please? 🧾','Where is my money?','I will not pay!'],ans:1}
+      },
+      {
+        emoji:'💳', title:'How Would You Like to Pay?', sub:'Unit 9 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#e8f5e9)', label:'💳 Paying time! 💳',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Here is your bill! The total is twenty euros. 💶',tip:'💡 "Total" = all the prices added together!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Can we pay by card, please? 💳',tip:'💡 "Pay by card" = use a bank card to pay!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Yes of course! Or you can pay by cash too. 💵',tip:'💡 "Pay by cash" = use paper money or coins!'},
+          {av:'👦',name:'Leo',side:'right',text:'We will pay by card. Thank you, Priya! 😊',tip:''},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Here is the card machine. Please tap or insert your card.',tip:'💡 "Insert" = put the card into the machine!'},
+        ],
+        vocab:[{w:'💶 Total',c:'#FF6B35'},{w:'💳 Pay by card',c:'#3498DB'},{w:'💵 Pay by cash',c:'#2ECC71'},{w:'🏧 Card machine',c:'#9B59B6'},{w:'🔌 Insert',c:'#FF4757'}],
+        quiz:{q:'🤔 You want to pay with paper money. How do you pay?',opts:['By card 💳','By cash 💵','By phone 📱','For free! 😄'],ans:1}
+      },
+      {
+        emoji:'🪙', title:'Getting the Change', sub:'Unit 9 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#fff9c4)', label:'🪙 The change! 🪙',
+          chars:[{e:'👩‍🍳',n:'Priya'},{e:'👦',n:'Leo'},{e:'👧',n:'Sofia'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Payment done! Here is your receipt. 🧾',tip:'💡 "Receipt" = paper that shows you paid!'},
+          {av:'👦',name:'Leo',side:'right',text:'Thank you so much, Priya! Great service today!',tip:'💡 "Service" = how well you were helped!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Thank you! Here is also your change — two euros. 🪙',tip:'💡 "Change" = the extra money returned to you!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Oh thank you! You can keep the change as a tip! 💖',tip:'💡 A "tip" = extra money to say thank you!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Oh, that is very kind! Thank you so much! 😊',tip:''},
+        ],
+        vocab:[{w:'🧾 Receipt',c:'#FF6B35'},{w:'👍 Service',c:'#2ECC71'},{w:'🪙 Change',c:'#FFD93D'},{w:'💝 Tip',c:'#FF6EB4'},{w:'🎉 Done',c:'#3498DB'}],
+        quiz:{q:'🤔 Extra money you give a waiter to say "thank you" is called...?',opts:['Change','A gift','A tip 💝','Tax'],ans:2}
+      },
+    ]
+  },
+
+  /* ── UNIT 10 ── */
+  {
+    id:10, color:'#8E44AD', lightBg:'linear-gradient(135deg,#f3e5f5,#ede7f6)',
+    emoji:'🌟', title:'Giving Compliments!',
+    desc:'Tell the staff how much you enjoyed it! Learn kind and positive words in English.',
+    scenes:[
+      {
+        emoji:'👏', title:'Telling Priya How Good it Was', sub:'Unit 10 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#f3e5f5,#fce4ec)', label:'👏 Saying nice things! 👏',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'},{e:'👩‍🍳',n:'Priya'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Priya, the pasta was absolutely perfect! 🍝',tip:'💡 "Absolutely" = 100% completely!'},
+          {av:'👦',name:'Leo',side:'right',text:'And the pizza was out of this world! 🌍🍕',tip:'💡 "Out of this world" = so good it\'s like magic!'},
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'That makes me so happy! You are very kind children! 😊',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'You were an excellent waitress! Very friendly!',tip:'💡 "Excellent" = the best, very very good!'},
+          {av:'👦',name:'Leo',side:'right',text:'Yes! You were helpful and kind all day! Thank you!',tip:'💡 "Helpful" = gave us good help!'},
+        ],
+        vocab:[{w:'💯 Absolutely',c:'#9B59B6'},{w:'🌍 Out of this world',c:'#FF6B35'},{w:'🏆 Excellent',c:'#FFD93D'},{w:'🤝 Friendly',c:'#2ECC71'},{w:'🙌 Helpful',c:'#3498DB'}],
+        quiz:{q:'🤔 You want to say the food was THE BEST EVER. What do you say?',opts:['It was okay.','The food was average.','The food was out of this world! 🌍','The food was normal.'],ans:2}
+      },
+      {
+        emoji:'👨‍💼', title:'Complimenting the Manager', sub:'Unit 10 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#e8f5e9)', label:'👨‍💼 Talking to the Manager 👨‍💼',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'},{e:'👨‍💼',n:'Manager Max'}]},
+        dials:[
+          {av:'🎙️',name:'Narrator',side:'narr',text:'Sofia and Leo walk to the exit. Manager Max is there to say goodbye! 👋',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'Max, this was the best restaurant we have visited!',tip:'💡 "Visited" = been to a place!'},
+          {av:'👧',name:'Sofia',side:'left',text:'The food was amazing and the restaurant is beautiful!',tip:''},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Thank you so much! That means the world to us! 🌟',tip:'💡 "Means the world" = very important and special!'},
+          {av:'👦',name:'Leo',side:'right',text:'We will tell all our friends about Sunshine Restaurant! 😄',tip:'💡 Telling others = a great compliment!'},
+        ],
+        vocab:[{w:'🏆 Best ever',c:'#FFD93D'},{w:'🌸 Beautiful',c:'#FF6EB4'},{w:'🌍 Means the world',c:'#9B59B6'},{w:'📢 Tell friends',c:'#FF6B35'},{w:'💌 Compliment',c:'#2ECC71'}],
+        quiz:{q:'🤔 Something is very important to you. What do you say?',opts:['I don\'t care.','It means the world to me! 🌍','It\'s just okay.','Whatever.'],ans:1}
+      },
+    ]
+  },
+
+  /* ── UNIT 11 ── */
+  {
+    id:11, color:'#16A085', lightBg:'linear-gradient(135deg,#e0f2f1,#e0f7fa)',
+    emoji:'👋', title:'Saying Goodbye!',
+    desc:'Time to leave! Learn all the polite ways to say goodbye and wish people well in English.',
+    scenes:[
+      {
+        emoji:'🚪', title:'Getting Ready to Leave', sub:'Unit 11 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e0f2f1,#e8f5e9)', label:'🚪 Almost time to go! 🚪',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'},{e:'👨‍💼',n:'Max'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Leo, we should go now. We have been here a long time!',tip:'💡 "A long time" = many hours!'},
+          {av:'👦',name:'Leo',side:'right',text:'You are right! Let\'s get our things and go.',tip:'💡 "Get our things" = collect bags, jackets etc.'},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Are you leaving already? I hope you enjoyed your visit!',tip:'💡 "Already" = so soon? Time went fast!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Yes, we are leaving now. Thank you for everything! 🙏',tip:'💡 "Thank you for everything" = big thank you for all!'},
+          {av:'👦',name:'Leo',side:'right',text:'We had a fantastic time! Really, truly wonderful! 🌟',tip:'💡 "Truly" = sincerely, really honestly!'},
+        ],
+        vocab:[{w:'🚪 Leaving',c:'#16A085'},{w:'🎒 Get our things',c:'#FF6B35'},{w:'🌟 Enjoyed',c:'#FFD93D'},{w:'🙏 Thank you for everything',c:'#2ECC71'},{w:'💫 Truly',c:'#9B59B6'}],
+        quiz:{q:'🤔 It is time to leave. What do you say first?',opts:['I will stay forever!','We are leaving now, thank you! 🚪','Give me more food!','Where is the exit?'],ans:1}
+      },
+      {
+        emoji:'👋', title:'The Big Goodbye!', sub:'Unit 11 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fce4ec,#e3f2fd)', label:'👋 Goodbye time! 👋',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'},{e:'👨‍💼',n:'Max'},{e:'👩‍🍳',n:'Priya'}]},
+        dials:[
+          {av:'👩‍🍳',name:'Waitress Priya',side:'staff',text:'Goodbye Sofia and Leo! Come back soon! 👋',tip:'💡 "Come back soon" = visit us again quickly!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Goodbye Priya! Have a lovely afternoon! 🌸',tip:'💡 "Have a lovely afternoon" = wishing good time!'},
+          {av:'👦',name:'Leo',side:'right',text:'Goodbye Max! Have a wonderful day! ☀️',tip:'💡 "Wonderful day" = wishing a great day!'},
+          {av:'👨‍💼',name:'Manager Max',side:'staff',text:'Goodbye! Take care and see you next time! 🌟',tip:'💡 "Take care" = be safe, stay well!'},
+          {av:'👧',name:'Sofia',side:'left',text:'See you next time! We will definitely come back! 😊',tip:'💡 "Definitely" = 100% for sure!'},
+        ],
+        vocab:[{w:'👋 Goodbye',c:'#FF6B35'},{w:'🌸 Have a lovely day',c:'#FF6EB4'},{w:'☀️ Have a wonderful day',c:'#FFD93D'},{w:'💖 Take care',c:'#FF4757'},{w:'🔜 See you next time',c:'#3498DB'}],
+        quiz:{q:'🤔 You want to wish someone a good day as you leave. What do you say?',opts:['Good morning!','Have a wonderful day! ☀️','See you never!','Go away!'],ans:1}
+      },
+      {
+        emoji:'🌈', title:'Walking Home Happy!', sub:'Unit 11 · Scene 3',
+        illus:{bg:'linear-gradient(135deg,#e8f5e9,#fff9c4)', label:'🌈 Happy walk home! 🌈',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'🎙️',name:'Narrator',side:'narr',text:'Sofia and Leo walk outside. The sun is shining and they feel so happy! ☀️',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'That was the best restaurant trip ever! 🌟',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'I agree! We talked so much English today! 😄',tip:'💡 "I agree" = yes, I think the same!'},
+          {av:'👦',name:'Leo',side:'right',text:'We said hello, ordered food, asked for help, and paid!',tip:''},
+          {av:'👧',name:'Sofia',side:'left',text:'We can go to any restaurant now! Our English is great! 🎉',tip:'💡 You DID it! You know restaurant English now!'},
+        ],
+        vocab:[{w:'☀️ Sunshine',c:'#FFD93D'},{w:'🤝 I agree',c:'#2ECC71'},{w:'🎉 We did it!',c:'#FF6B35'},{w:'💪 Confident',c:'#9B59B6'},{w:'🌟 Great!',c:'#FF4757'}],
+        quiz:{q:'🤔 Your friend says "this was great!" You feel the same. What do you say?',opts:['No it wasn\'t.','I disagree!','I agree! 🤝','I don\'t know.'],ans:2}
+      },
+    ]
+  },
+
+  /* ── UNIT 12 ── */
+  {
+    id:12, color:'#E74C3C', lightBg:'linear-gradient(135deg,#fce4ec,#fff3e0)',
+    emoji:'🎓', title:'Big Review & Final Quiz!',
+    desc:'Amazing work! Let\'s review everything we learned today and take the final quiz!',
+    scenes:[
+      {
+        emoji:'📚', title:'Phrases We Learned — Part 1', sub:'Unit 12 · Scene 1',
+        illus:{bg:'linear-gradient(135deg,#e3f2fd,#e8f5e9)', label:'📚 Let\'s remember! 📚',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👧',name:'Sofia',side:'left',text:'Leo! Let\'s remember all the things we said today!',tip:''},
+          {av:'👦',name:'Leo',side:'right',text:'Okay! First we said "Hello! Welcome!" at the door. 👋',tip:'💡 Greetings = how we say hello!'},
+          {av:'👧',name:'Sofia',side:'left',text:'Then we said "Table for two, please!" to the manager.',tip:'💡 Asking for a table = very important!'},
+          {av:'👦',name:'Leo',side:'right',text:'We said "Can we see the menu, please?" to Priya!',tip:'💡 Asking for the menu politely!'},
+          {av:'👧',name:'Sofia',side:'left',text:'And "I would like pasta, please!" when we ordered!',tip:'💡 Ordering with "I would like" is the best way!'},
+        ],
+        vocab:[{w:'👋 Hello/Welcome',c:'#FF6B35'},{w:'🪑 Table for two',c:'#9B59B6'},{w:'📋 See the menu',c:'#3498DB'},{w:'🍝 I would like',c:'#2ECC71'},{w:'🙏 Please/Thank you',c:'#FF4757'}],
+        quiz:{q:'🤔 What is the polite way to order food?',opts:['I want food now!','I would like pasta, please! 🍝','FOOD! NOW!','Give me pasta!'],ans:1}
+      },
+      {
+        emoji:'🏆', title:'Phrases We Learned — Part 2', sub:'Unit 12 · Scene 2',
+        illus:{bg:'linear-gradient(135deg,#fff9c4,#fce4ec)', label:'🏆 More great phrases! 🏆',
+          chars:[{e:'👧',n:'Sofia'},{e:'👦',n:'Leo'}]},
+        dials:[
+          {av:'👦',name:'Leo',side:'right',text:'When food came we said "It is delicious!" 😋',tip:'💡 Delicious = the best tasting word!'},
+          {av:'👧',name:'Sofia',side:'left',text:'When there was a problem, we said "Excuse me, I have a small problem." 🙋',tip:'💡 Always stay polite with problems!'},
+          {av:'👦',name:'Leo',side:'right',text:'For the bill we said "Can we have the bill, please?" 🧾',tip:'💡 Bill = the paper showing the price!'},
+          {av:'👧',name:'Sofia',side:'left',text:'And at the end — "Goodbye! Have a wonderful day!" 👋',tip:'💡 A warm goodbye is always lovely!'},
+          {av:'👦',name:'Leo',side:'right',text:'We learned SO many English words today! We are amazing! 🌟',tip:'💡 YOU are amazing! Great job today!'},
+        ],
+        vocab:[{w:'😋 Delicious',c:'#FF6B35'},{w:'🙋 Excuse me',c:'#9B59B6'},{w:'🧾 Bill please',c:'#3498DB'},{w:'👋 Goodbye',c:'#2ECC71'},{w:'🌟 Amazing',c:'#FFD93D'}],
+        quiz:{q:'🤔 The food is SO GOOD! What is the best word?',opts:['Terrible','Boring','Delicious! 😋','Okay'],ans:2}
+      },
+    ]
+  },
+];
+
+/* ══════════════════════════════════════════════
+   FINAL QUIZ DATA
+══════════════════════════════════════════════ */
+const FINAL_QUIZ = [
+  {q:'You arrive at the restaurant. What do you say?', opts:['Go away!','Hello! Nice to meet you! 👋','I am hungry!','Goodbye!'], ans:1},
+  {q:'You want 2 seats. What do you ask for?', opts:['A table for ten!','A table for two, please 🪑','No table needed!','The biggest table!'], ans:1},
+  {q:'The waitress asks "Are you ready to order?" You are ready. What do you say?', opts:['No, never!','I am sleeping.','Yes! I would like pasta please 🍝','What is pasta?'], ans:2},
+  {q:'Your soup is cold. How do you tell the waitress POLITELY?', opts:['THIS IS WRONG! 😡','Excuse me, my soup is cold. Can I have a warm one? 🙋','I will not eat this!','Terrible restaurant!'], ans:1},
+  {q:'The food is very very yummy. What word do you use?', opts:['Terrible','Normal','Delicious 😋','Dry'], ans:2},
+  {q:'You want to pay with a bank card. What do you say?', opts:['Can we pay by card, please? 💳','I have no money!','Free please!','I will come back to pay!'], ans:0},
+  {q:'You are full and want to say goodbye. What do you say first?', opts:['I am still hungry!','Thank you, goodbye! Have a wonderful day! 👋','Where is more food?','I want dessert again!'], ans:1},
+  {q:'What do you say when you let a friend go through a door first?', opts:['Me first!','No you cannot go!','After you! 🚪','Run!'], ans:2},
+  {q:'Extra money you give a waiter to say "great service" is called?', opts:['A present','A bribe','A mistake','A tip 💝'], ans:3},
+  {q:'Priya was helpful and nice all day. She was...?', opts:['Rude','Unfriendly','Excellent and friendly 🌟','Sleepy'], ans:2},
+];
+
+/* ══════════════════════════════════════════════
+   ALL VOCABULARY — for cloud at the end
+══════════════════════════════════════════════ */
+const ALL_VOCAB = [
+  {w:'😋 Hungry', c:'#FF6B35'}, {w:'👋 Hello', c:'#2ECC71'}, {w:'🌟 Welcome', c:'#FFD93D'},
+  {w:'🙏 Thank you', c:'#FF4757'}, {w:'🪑 Table for two', c:'#9B59B6'}, {w:'📋 Menu', c:'#3498DB'},
+  {w:'🍕 Pizza', c:'#FF6B35'}, {w:'🍝 Pasta', c:'#FF4757'}, {w:'🍔 Burger', c:'#FFD93D'},
+  {w:'🥗 Salad', c:'#2ECC71'}, {w:'💧 Water', c:'#3498DB'}, {w:'🧃 Juice', c:'#FF6EB4'},
+  {w:'🛎️ Order', c:'#9B59B6'}, {w:'🍽️ I would like', c:'#FF6B35'}, {w:'✅ Ready', c:'#2ECC71'},
+  {w:'😋 Delicious', c:'#FF4757'}, {w:'🤩 Wonderful', c:'#FFD93D'}, {w:'🙋 Excuse me', c:'#3498DB'},
+  {w:'🧾 Bill', c:'#9B59B6'}, {w:'💳 Pay by card', c:'#FF6B35'}, {w:'💵 Pay by cash', c:'#2ECC71'},
+  {w:'💝 Tip', c:'#FF6EB4'}, {w:'👋 Goodbye', c:'#FF4757'}, {w:'☀️ Have a nice day', c:'#FFD93D'},
+  {w:'💖 Take care', c:'#FF6B35'}, {w:'🌟 Excellent', c:'#9B59B6'}, {w:'🔜 See you again', c:'#3498DB'},
+  {w:'🍦 Dessert', c:'#FF6EB4'}, {w:'🍞 Bread', c:'#FFD93D'}, {w:'🔊 Noisy', c:'#FF6B35'},
+];
+
+/* ══════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════ */
+let curUnit = 0;
+let curStep = 0;  // 0 = unit intro, 1..N = scenes, last = break (if needed)
+let steps = [];   // flat array: {type:'intro'|'scene'|'break', unit, sceneIdx}
+let lessonStartTime = null;
+let timerInterval = null;
+let fqAnswered = [];
+let fqScore = 0;
+
+/* ══════════════════════════════════════════════
+   BUILD STEPS
+══════════════════════════════════════════════ */
+function buildSteps() {
+  steps = [];
+  UNITS.forEach((unit, ui) => {
+    steps.push({type:'intro', unit:ui});
+    unit.scenes.forEach((_, si) => {
+      steps.push({type:'scene', unit:ui, sceneIdx:si});
+    });
+    // Break after units 4 and 8
+    if (ui === 3 || ui === 7) steps.push({type:'break', unit:ui});
+  });
+  steps.push({type:'final'});
+}
+
+/* ══════════════════════════════════════════════
+   INIT BG + TITLE PREVIEW
+══════════════════════════════════════════════ */
+(function init() {
+  // BG circles
+  const bg = document.getElementById('bgAnim');
+  const colors = ['#FFD93D','#FF6B35','#FF4757','#2ECC71','#3498DB','#9B59B6','#FF6EB4'];
+  for (let i=0; i<8; i++) {
+    const d = document.createElement('div');
+    d.className = 'bg-circle';
+    const s = 150+Math.random()*300;
+    d.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:${colors[i%colors.length]};animation-delay:${Math.random()*5}s;animation-duration:${8+Math.random()*6}s`;
+    bg.appendChild(d);
+  }
+  // Units preview pills
+  const container = document.getElementById('units-preview');
+  UNITS.forEach(u => {
+    const p = document.createElement('div');
+    p.className = 'upill';
+    p.style.borderTopColor = u.color;
+    p.innerHTML = `<div class="unum">Unit ${u.id}</div><div class="uname">${u.emoji} ${u.title}</div>`;
+    container.appendChild(p);
+  });
+  buildSteps();
+})();
+
+/* ══════════════════════════════════════════════
+   START
+══════════════════════════════════════════════ */
+function startLesson() {
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('lesson-screen').classList.remove('hidden');
+  document.getElementById('top-bar').style.display = 'block';
+  lessonStartTime = Date.now();
+  timerInterval = setInterval(updateTimer, 1000);
+  curStep = 0;
+  renderStep();
+}
+
+function updateTimer() {
+  const elapsed = Math.floor((Date.now() - lessonStartTime) / 1000);
+  const m = Math.floor(elapsed/60);
+  const s = elapsed % 60;
+  document.getElementById('tb-timer').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+}
+
+/* ══════════════════════════════════════════════
+   RENDER STEP
+══════════════════════════════════════════════ */
+function renderStep() {
+  const step = steps[curStep];
+  const totalScenes = steps.filter(s=>s.type==='scene').length;
+  const doneScenes = steps.slice(0,curStep).filter(s=>s.type==='scene').length;
+  document.getElementById('tb-prog').style.width = ((doneScenes/totalScenes)*100)+'%';
+  document.getElementById('btn-prev').style.display = curStep > 0 ? 'inline-flex' : 'none';
+
+  const isLast = curStep === steps.length - 1;
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = isLast ? '🎓 Final Review!' : 'Next ▶';
+  nextBtn.className = isLast ? 'btn btn-quiz btn-md' : 'btn btn-next btn-md';
+
+  if (step.type === 'intro') renderUnitIntro(step.unit);
+  else if (step.type === 'scene') renderScene(step.unit, step.sceneIdx);
+  else if (step.type === 'break') renderBreak(step.unit);
+  else if (step.type === 'final') renderFinalScreen();
+
+  updateDots();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function updateDots() {
+  const dotsEl = document.getElementById('scene-dots');
+  dotsEl.innerHTML = '';
+  const MAX_DOTS = 20;
+  const total = steps.length;
+  if (total <= MAX_DOTS) {
+    steps.forEach((s,i) => {
+      const d = document.createElement('div');
+      d.className = 'sdot' + (i===curStep?' active':(i<curStep?' done':''));
+      d.title = s.type;
+      d.onclick = () => { curStep=i; renderStep(); };
+      dotsEl.appendChild(d);
+    });
+  }
+}
+
+/* ══════════════════════════════════════════════
+   UNIT INTRO
+══════════════════════════════════════════════ */
+function renderUnitIntro(ui) {
+  const u = UNITS[ui];
+  document.getElementById('tb-unit').textContent = `Unit ${u.id} of 12`;
+  document.getElementById('tb-scene').textContent = u.title;
+
+  const sceneChips = u.scenes.map(s=>`<div class="ui-scene-chip">${s.emoji} ${s.title}</div>`).join('');
+  document.getElementById('scene-container').innerHTML = `
+    <div class="unit-intro">
+      <div class="ui-badge" style="background:${u.color}">${u.emoji} Unit ${u.id} of 12</div>
+      <span class="ui-emoji">${u.emoji}</span>
+      <div class="ui-title">${u.title}</div>
+      <div class="ui-desc">${u.desc}</div>
+      <div class="ui-scenes-list">${sceneChips}</div>
+    </div>`;
+}
+
+/* ══════════════════════════════════════════════
+   BREAK CARD
+══════════════════════════════════════════════ */
+function renderBreak(ui) {
+  document.getElementById('tb-unit').textContent = '☕ Break Time!';
+  document.getElementById('tb-scene').textContent = 'Rest your brain!';
+  const msg = ui===3
+    ? 'You finished 4 Units! 🎉 Take a 5-minute break. Drink some water, stretch, and relax!'
+    : 'Amazing! 8 Units done! 🌟 Take another break. You are doing so well!';
+  document.getElementById('scene-container').innerHTML = `
+    <div class="break-card">
+      <span class="break-emoji">☕</span>
+      <div class="break-title">Time for a Break!</div>
+      <div class="break-msg">${msg}</div>
+      <div style="font-size:1.5rem;margin-bottom:14px;font-weight:700;color:#666;">
+        🚰 Drink water &nbsp; 🧘 Stretch &nbsp; 😴 Rest your eyes
+      </div>
+      <div class="break-timer">Enjoy your break! 🌟</div>
+    </div>`;
+}
+
+/* ══════════════════════════════════════════════
+   SCENE RENDER
+══════════════════════════════════════════════ */
+function renderScene(ui, si) {
+  const u = UNITS[ui];
+  const sc = u.scenes[si];
+  document.getElementById('tb-unit').textContent = `Unit ${u.id} · ${u.title}`;
+  document.getElementById('tb-scene').textContent = sc.title;
+
+  const charsHTML = sc.illus.chars.map(c=>`
+    <div class="char-item">
+      <span class="char-emo">${c.e}</span>
+      <span class="char-lbl">${c.n}</span>
+    </div>`).join('');
+
+  const dialsHTML = sc.dials.map((d,i)=>`
+    <div class="dial ${d.side==='right'?'right':d.side==='staff'?'staff':d.side==='narr'?'narr':''}" id="dial-${i}">
+      <div class="av">${d.av}</div>
+      <div class="bbl-wrap">
+        <div class="spk-name">${d.name}</div>
+        <div class="bbl">${d.text}${d.tip?`<span class="tip">${d.tip}</span>`:''}</div>
+      </div>
+    </div>`).join('');
+
+  const vocabHTML = sc.vocab.map(v=>`
+    <span class="vtag" style="border-color:${v.c};color:${v.c}" onclick="animTag(this)">${v.w}</span>`).join('');
+
+  document.getElementById('scene-container').innerHTML = `
+    <div class="scene-card u${ui+1}">
+      <div class="sc-header">
+        <span class="sc-emoji">${sc.emoji}</span>
+        <div class="sc-title-wrap">
+          <div class="sc-title">${sc.title}</div>
+          <div class="sc-sub">${sc.sub}</div>
+        </div>
+        <span class="sc-unit-badge" style="background:${u.color}">Unit ${u.id}</span>
+      </div>
+
+      <div class="illus" style="background:${sc.illus.bg}">
+        <div class="illus-lbl">${sc.illus.label}</div>
+        <div class="chars-row">${charsHTML}</div>
+      </div>
+
+      <div class="dial-section" id="dial-section">${dialsHTML}</div>
+
+      <div class="vocab-box" id="vocab-box">
+        <div class="vocab-ttl">📚 New Words!</div>
+        <div class="vocab-grid">${vocabHTML}</div>
+      </div>
+
+      <div class="quiz-box" id="quiz-box">
+        <div class="quiz-q">🎯 Quick Quiz! ${sc.quiz.q}</div>
+        <div class="quiz-opts">
+          ${sc.quiz.opts.map((o,i)=>`<button class="qbtn" id="qb-${i}" onclick="answerQuiz(${i},${sc.quiz.ans})">${o}</button>`).join('')}
+        </div>
+        <div class="quiz-res" id="quiz-res"></div>
+      </div>
+    </div>`;
+
+  // Animate dialogues
+  sc.dials.forEach((_,i)=>{
+    setTimeout(()=>{
+      const el=document.getElementById(`dial-${i}`);
+      if(el) el.classList.add('show');
+    }, 300 + i*650);
+  });
+  // Show vocab & quiz after all dialogues
+  const delay = 300 + sc.dials.length*650 + 500;
+  setTimeout(()=>{
+    const vb=document.getElementById('vocab-box');
+    if(vb) vb.classList.add('open');
+  }, delay);
+  setTimeout(()=>{
+    const qb=document.getElementById('quiz-box');
+    if(qb) qb.classList.add('open');
+  }, delay+600);
+}
+
+function animTag(el) {
+  el.style.transform='scale(1.2)';
+  setTimeout(()=>el.style.transform='',200);
+}
+
+function answerQuiz(chosen, correct) {
+  const btns = document.querySelectorAll('.qbtn');
+  btns.forEach(b=>b.disabled=true);
+  btns[correct].classList.add('ok');
+  if (chosen!==correct) btns[chosen].classList.add('no');
+  const res = document.getElementById('quiz-res');
+  if (chosen===correct) {
+    res.textContent='⭐ Amazing! That is correct! Well done! ⭐';
+    res.className='quiz-res show good';
+    launchConfetti(30);
+  } else {
+    res.textContent=`Not quite! The answer was: "${btns[correct].textContent}" 😊 Try to remember!`;
+    res.className='quiz-res show bad';
+  }
+}
+
+/* ══════════════════════════════════════════════
+   FINAL SCREEN
+══════════════════════════════════════════════ */
+function renderFinalScreen() {
+  document.getElementById('lesson-screen').classList.add('hidden');
+  document.getElementById('final-screen').classList.remove('hidden');
+  clearInterval(timerInterval);
+
+  // Review
+  const rc = document.getElementById('review-container');
+  rc.innerHTML = '';
+  UNITS.forEach((u,ui)=>{
+    const allWords = u.scenes.flatMap(s=>s.vocab);
+    const wordsHTML = allWords.map(v=>`<span class="rw" style="background:${v.c}">${v.w}</span>`).join('');
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.style.animationDelay = (ui*0.08)+'s';
+    card.innerHTML = `<div class="review-unit-title"><span style="background:${u.color};color:white;border-radius:10px;padding:2px 10px;font-size:.78rem">Unit ${u.id}</span> ${u.emoji} ${u.title}</div><div class="review-words">${wordsHTML}</div>`;
+    rc.appendChild(card);
+  });
+
+  // Final quiz
+  const fqc = document.getElementById('fquiz-container');
+  fqc.innerHTML = '';
+  fqAnswered = new Array(FINAL_QUIZ.length).fill(false);
+  fqScore = 0;
+  FINAL_QUIZ.forEach((q,qi)=>{
+    const card = document.createElement('div');
+    card.className = 'fq-card';
+    card.style.animationDelay = (qi*0.05)+'s';
+    card.innerHTML = `
+      <div class="fq-num">Question ${qi+1} of ${FINAL_QUIZ.length}</div>
+      <div class="fq-q">${q.q}</div>
+      <div class="fq-opts">
+        ${q.opts.map((o,oi)=>`<button class="fqbtn" id="fq-${qi}-${oi}" onclick="answerFQ(${qi},${oi},${q.ans})">${o}</button>`).join('')}
+      </div>`;
+    fqc.appendChild(card);
+  });
+}
+
+function answerFQ(qi, chosen, correct) {
+  if (fqAnswered[qi]) return;
+  fqAnswered[qi] = true;
+  FINAL_QUIZ[qi].opts.forEach((_,oi)=>{
+    const b = document.getElementById(`fq-${qi}-${oi}`);
+    b.disabled = true;
+    if (oi===correct) b.classList.add('ok');
+    else if (oi===chosen && chosen!==correct) b.classList.add('no');
+  });
+  if (chosen===correct) { fqScore++; launchConfetti(20); }
+
+  // Check if all answered
+  if (fqAnswered.every(Boolean)) {
+    const ss = document.getElementById('score-section');
+    ss.classList.add('show');
+    document.getElementById('score-num').textContent = `${fqScore} / ${FINAL_QUIZ.length}`;
+    const msgs = ['Keep practising! You can do it! 💪','Good effort! Review the units and try again! 😊','Well done! You know a lot! 🌟','Fantastic! You are a star! ⭐','PERFECT SCORE! You are a Restaurant English Champion! 🏆'];
+    const idx = fqScore<=2?0:fqScore<=4?1:fqScore<=6?2:fqScore<=8?3:4;
+    document.getElementById('score-msg').textContent = msgs[idx];
+    launchConfetti(60);
+    setTimeout(()=>window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'}),400);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   CELEBRATION
+══════════════════════════════════════════════ */
+function showCelebration() {
+  document.getElementById('final-screen').classList.add('hidden');
+  document.getElementById('celebration').style.display = 'block';
+  const cloud = document.getElementById('learned-cloud');
+  cloud.innerHTML = '';
+  ALL_VOCAB.forEach((v,i)=>{
+    setTimeout(()=>{
+      const span = document.createElement('span');
+      span.className = 'lword';
+      span.style.background = v.c;
+      span.style.animationDelay = (i*0.06)+'s';
+      span.textContent = v.w;
+      cloud.appendChild(span);
+    }, i*60);
+  });
+  launchConfetti(100);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ══════════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════════ */
+function nextStep() {
+  if (curStep < steps.length-1) {
+    curStep++;
+    renderStep();
+  } else {
+    renderFinalScreen();
+  }
+}
+
+function prevStep() {
+  if (curStep > 0) {
+    curStep--;
+    renderStep();
+  }
+}
+
+function goHome() {
+  if (!confirm('Go back to the home screen? Your progress will be lost.')) return;
+  clearInterval(timerInterval);
+  document.getElementById('lesson-screen').classList.add('hidden');
+  document.getElementById('final-screen').classList.add('hidden');
+  document.getElementById('celebration').style.display='none';
+  document.getElementById('title-screen').classList.remove('hidden');
+  document.getElementById('top-bar').style.display='none';
+}
+
+function replayAll() {
+  document.getElementById('celebration').style.display='none';
+  document.getElementById('title-screen').classList.remove('hidden');
+  buildSteps();
+  fqAnswered=[]; fqScore=0;
+}
+
+/* ══════════════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════════════ */
+function launchConfetti(n=40) {
+  const cols=['#FFD93D','#FF6B35','#FF4757','#2ECC71','#3498DB','#9B59B6','#FF6EB4'];
+  for (let i=0;i<n;i++) {
+    setTimeout(()=>{
+      const el=document.createElement('div');
+      el.className='conf';
+      const sz=6+Math.random()*8;
+      el.style.cssText=`left:${Math.random()*100}vw;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2}s;`;
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),4000);
+    },i*30);
+  }
+}
+</script>
+</body>
+</html>

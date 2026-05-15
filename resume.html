@@ -61,6 +61,14 @@
             /* Template doesn't seem to have lines under sections, or very subtle */
         }
 
+        .left-column > section:first-child h3 {
+            margin-top: 0;
+        }
+
+        .right-column > section:first-child h3 {
+            margin-top: 0;
+        }
+
         h4 {
             font-size: 0.9rem;
             color: #000;
@@ -77,7 +85,7 @@
 
         a {
             color: var(--text-grey);
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         ul {
@@ -93,17 +101,18 @@
         /* Layout */
         .header-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 2rem;
             margin-bottom: 1rem;
         }
 
         .header-left {
-            width: 75%;
+            width: 70%;
         }
 
         .header-right {
-            width: 25%;
-            text-align: right;
+            width: auto;
+            text-align: left;
         }
 
         .profile-photo {
@@ -304,12 +313,23 @@
                 </div>
             </section>
 
+            <section style="margin-bottom: 0;">
+                <h3>Languages</h3>
+                <div style="font-size: 0.9rem;">
+                    English - Fluent, Italian - Professional, Tamil - Native
+                </div>
+            </section>
+
         </div>
 
         <!-- Right Column: Contact, Skills, etc. -->
         <div class="right-column">
 
-            <div class="sidebar-section">
+            <section>
+                <h3>Contact</h3>
+            </section>
+
+            <div class="sidebar-section" style="margin-bottom: 1.1rem;">
                 <!-- Contact Info mapped to sidebar -->
                 <div class="contact-item">
                     <span class="contact-label">Address:</span> Milan, Italy.
@@ -323,6 +343,9 @@
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">LinkedIn:</span> <a href="#">linkedin.com/in/sowmya-palanichamy</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Website:</span> <a href="https://www.sowmyapalanichamy.com">www.sowmyapalanichamy.com</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">Nationality:</span> Indian
@@ -344,17 +367,9 @@
             </section>
 
             <section class="sidebar-section">
-                <h3>Languages</h3>
-                <div style="font-size: 0.9rem;">
-                    <div>English - Fluent</div>
-                    <div>Italian - Professional</div>
-                    <div>Tamil - Native</div>
-                </div>
-            </section>
-
-            <section class="sidebar-section">
                 <h3>Certifications</h3>
                 <ul style="margin-left: 1rem; font-size: 0.9rem;">
+                    <li>Life Cycle Assessment - Coursera, University of Michigan</li>
                     <li>Autodesk AutoCAD User (12/2017)</li>
                     <li>Soil & Water Conservation (09/2018)</li>
                     <li>Health and Safety (05/2023)</li>
